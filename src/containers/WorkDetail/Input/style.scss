@@ -1,0 +1,47 @@
+
+.input-pop {
+  :global {
+    .am-textarea-control {
+      padding: 0;
+    }
+    .am-list-item {
+      height: 35px !important;
+      width: 65%;
+      border-radius: 10px;
+      min-height: 35px
+    }
+    .am-textarea-control textarea {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+  .bottom-input {
+    width: 100%;
+    height: 1rem;
+    background: #d6f1ff;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 99999999;
+    .input {
+      background: #ffffff;
+    }
+    .send {
+      font-size: 18px;
+    }
+
+  }
+}
+
+.hei{
+  width: 10rem;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.7);
+  z-index: 1;
+}
+

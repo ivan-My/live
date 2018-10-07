@@ -1,0 +1,26 @@
+.work-prompt {
+  :global{
+    .am-list-header{
+      padding:0
+    }
+  }
+  background: #ffffff;
+  .head {
+    height: 1rem;
+    font-size: 18px;
+    background: #d6f1ff;
+    line-height: 1rem;
+    position: relative;
+    padding-left: .4rem;
+    &::before {
+      content: " ";
+      position: absolute;
+      width: 2px;
+      height: .32rem;
+      left: .2rem;
+      top: .34rem;
+      background: #87dbff;
+    }
+  }
+
+}

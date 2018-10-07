@@ -1,0 +1,44 @@
+.collage-lists {
+  background: #ffffff;
+  color: #000000;
+  padding: .1rem .2rem 0 .2rem;
+  .tit {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top:.3rem;
+  }
+  .more-tuan {
+    padding: .1rem;
+    display: flex;
+    justify-content: space-between;
+    i {
+      color: #009dff;
+    }
+  }
+
+  .collage-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .4rem 0;
+    border-bottom: 1px solid #d6f1ff;
+    .collage-list-item-name{
+      position: relative;
+      left: 1rem;
+      font-size: 18px;
+    }
+    .right {
+      display: flex;
+      align-items: center;
+      .join-btn{
+        width: 1.3rem;
+        height: .4rem;
+        background: #009dff;
+        text-align: center;
+        line-height: .4rem;
+        color: #ffffff;
+        border-radius: 3px;
+      }
+    }
+  }
+}

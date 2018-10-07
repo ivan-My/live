@@ -1,0 +1,123 @@
+.my-listView {
+  overflow: auto;
+  background: none;
+  margin-bottom: 50px;
+  :global {
+    .am-list-body {
+      margin-top: 45px;
+    }
+    .am-list-footer {
+      padding: 0;
+    }
+  }
+  .renderFooter {
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    //   background: #ffffff;
+  }
+  .item {
+    background: #ffffff;
+    margin: .3rem 0;
+    padding: .3rem;
+    padding-top: 0;
+    margin-bottom: 0;
+    .top {
+      height: 1rem;
+      display: flex;
+      align-items: center;
+      .time {
+        color: #6f9cb9;
+        margin-left: .2rem;
+      }
+      .top-img {
+        width: .56rem;
+        height: .56rem;
+        margin-right: .2rem;
+        img {
+          width: .56rem;
+          height: .56rem;
+          border-radius: 50%;
+        }
+      }
+    }
+    .imgList {
+      display: flex;
+      .list {
+        width: 2.2rem;
+        height: 2.2rem;
+        margin-right: .2rem;
+      }
+      .alist {
+        width: 3rem;
+        height: 3rem;
+        margin-right: .2rem;
+        position: relative;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .play {
+        width: .75rem;
+        height: .75rem;
+        position: absolute;
+        top: 1.12rem;
+        left: 1.12rem;
+        opacity: 0.3;
+      }
+    }
+    .work-data {
+      margin-top: .1rem;
+      display: flex;
+      border-bottom: 1px solid #87dbff;
+      height: .7rem;
+      line-height: .7rem;
+    }
+    .work-data-item {
+      margin-right: 0.2rem;
+      img {
+        width: 0.3rem;
+        height: 0.3rem;
+        vertical-align: middle;
+      }
+    }
+    .coursename {
+      margin-top: .1rem;
+      display: flex;
+      align-items: center;
+      .coursenameImg {
+        width: .6rem;
+        height: .6rem;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
+      div {
+        margin-right: .2rem;
+      }
+      .icon-left {
+        position: absolute;
+        right: .3rem;
+        color: #87dbff;
+      }
+    }
+  }
+  .videoAlert {
+    width: 10rem;
+    height: 100%;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background: #000;
+  }
+  .video {
+    width: 100%;
+    height: 4.2rem;
+    position: absolute;
+    top: 43%;
+  }
+}

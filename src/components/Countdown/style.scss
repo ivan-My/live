@@ -1,0 +1,14 @@
+.countdown{
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin-bottom: .1rem;
+  div{
+    background: #ff476f;
+    margin-right: 5px;
+    padding: 2px;
+  }
+  span,p{
+    color: #000000;
+  }
+}

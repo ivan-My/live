@@ -1,0 +1,40 @@
+.add-btn {
+  width: 100%;
+  height: 1rem;
+  background: #0383d3;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 0;
+  .left {
+    width: .4rem;
+    height: .4rem;
+    display: flex;
+align-items: center;
+    font-size: 18px;
+    color: #ffffff;
+    line-height: .12rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .center{
+    width: 2px;
+    height: .37rem;
+    //position: absolute;
+    //top: .465rem;
+    //left: 5rem;
+    background: #009dff;
+  }
+  .right{
+    width: .4rem;
+    height: .4rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

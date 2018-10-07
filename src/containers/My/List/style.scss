@@ -1,0 +1,10 @@
+.my-list{
+  :global {
+    .am-list-body{
+      background: none;
+    }
+    .am-list-item{
+      margin-bottom: .2rem;
+    }
+  }
+}

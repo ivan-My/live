@@ -1,0 +1,89 @@
+
+.my-list {
+  :global {
+    .am-list-item {
+      height: 2.5rem;
+      padding: 0;
+    }
+    .am-list-item img {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+    .am-badge-text {
+      background: none;
+    }
+    .am-list-line {
+      display: block !important;
+    }
+    .am-list-content {
+      line-height: 25px !important;
+    }
+    .am-badge {
+      z-index: 0;
+    }
+    .am-list-body {
+      display: inline;
+    }
+    .am-list-item .am-list-thumb:first-child {
+      margin-left: .2rem;
+    }
+  }
+  padding: 0 10px;
+  //padding-bottom: 2rem;
+  .badge {
+    background: #444444;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 1;
+  }
+  .head {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    .head-img {
+      width: .6rem;
+      height: .6rem;
+      img {
+        width: .6rem;
+        height: .6rem;
+        border-radius: 50%;
+      }
+    }
+    .detail-info {
+      color: #6f9cb9;
+      margin-left: .1rem;
+    }
+  }
+  .item {
+    padding: 10px 0 !important;
+  }
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: .2rem;
+    .userCnt {
+      color: #6f9cb9;
+      font-size: 14px;
+    }
+    .foot-item {
+      display: flex;
+      align-items: center;
+      .foot-badge {
+        margin-left: 12px;
+        padding: 0 3px;
+        background: #ffffff;
+        border-radius: 2px;
+        border: 1px solid #ff476f;
+        z-index: 0;
+        :global {
+          .am-badge-text {
+            color: #ff476f;
+          }
+        }
+      }
+    }
+
+  }
+}
+

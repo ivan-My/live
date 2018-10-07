@@ -1,0 +1,90 @@
+.colosr {
+  color: cyan;
+}
+
+.course-detail {
+  .back {
+    width: 1.13rem;
+    height: .4rem;
+    background: rgba(3, 43, 80, .8);
+    border-radius: .1rem;
+    line-height: .4rem;
+    text-align: center;
+    font-size: 12px;
+    position: fixed;
+    top: .3rem;
+    left: .3rem;
+    a {
+      color: #ffffff;
+    }
+  }
+  .top-img {
+    width: 100%;
+    height: 4.2rem;
+    img {
+      width: 100%;
+      height: 4.2rem;
+    }
+  }
+  .white-bg {
+    display: flex;
+    margin: .1rem 0;
+    .live {
+      color: red;
+      margin-right: .1rem;
+      position: relative;
+      &::before {
+        display: block;
+        content: " ";
+        width: .10rem;
+        height: .10rem;
+        background: #ff476f;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: .1rem
+      }
+    }
+  }
+  .item {
+    color: black;
+    background: #fff;
+    padding: .2rem .2rem .2rem .2rem;
+    span {
+      float: right;
+      position: absolute;
+      right: .2rem;
+    }
+  }
+  .host-box {
+    margin: .2rem 0;
+    height: 50px;
+    background: #fff;
+    padding: .1rem .2rem .1rem .2rem;
+    display: flex;
+    align-items: center;
+    .avatar {
+      width: .6rem;
+      height: .6rem;
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+    .name {
+      color: black;
+      margin-left: .1rem;
+      span {
+        color: #009dff;
+      }
+    }
+    .hose-go {
+      position: absolute;
+      right: .3rem;
+    }
+    span {
+      color: #009dff;
+    }
+  }
+}
