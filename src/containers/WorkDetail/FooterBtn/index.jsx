@@ -4,11 +4,11 @@ import {getIsLike, getAddLike, getRemoveLike} from '../../../api';
 import {Toast} from 'antd-mobile';
 
 /**
- * @constructor <AddBtn />
+ * @constructor <FooterBtn />
  * @description 详情页底部收藏
  */
 
-class AddBtn extends React.Component {
+class FooterBtn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -64,4 +64,4 @@ class AddBtn extends React.Component {
     }
 }
 
-export default AddBtn;
+export default FooterBtn;

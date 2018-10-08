@@ -5,7 +5,7 @@ import { ListView, Icon } from "antd-mobile";
 import { getCourseWorkData, getvideoUrl } from "../../../store/works";
 import CSSModules from "react-css-modules";
 import styles from "./style.scss";
-import Loading from "../../../components/Loadingm";
+import Loading from "../../../components/LoadingM";
 import VideoAlert from "../../../components/VideoAlert";
 
 @connect(
@@ -133,7 +133,7 @@ export default class Lists extends React.Component {
         />
         {this.props.videoUrl !== "" ? <VideoAlert src={this.props.videoUrl}
                                                   getvideoUrl={this.props.getvideoUrl}/> : null}
-                                                  }
+
       </React.Fragment>
     );
   }

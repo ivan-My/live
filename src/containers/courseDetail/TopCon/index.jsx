@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import styles from "./style.scss";
 import Countdown from "../../../components/Countdown";
 import BackHome from "../../../components/BackHome";
@@ -34,7 +35,7 @@ class TopCon extends React.Component {
             {d.HostData.HostName}<span>&nbsp;|&nbsp;</span>共{d.CourseCnt}两节课
           </div>
           <div className={styles["hose-go"]}>
-            主播其他课程推荐 <span> > </span>
+            <Link to={"/otherCourse/"+d.HostAccountId}>主播其他课程推荐 <span> > </span></Link>
           </div>
         </div>
       </div>

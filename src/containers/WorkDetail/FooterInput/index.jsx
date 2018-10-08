@@ -3,7 +3,8 @@ import styles from './style.scss';
 import {getAddComment} from '../../../api';
 import {TextareaItem} from 'antd-mobile';
 
-class AddBtn extends React.Component {
+
+class FooterInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,4 +46,4 @@ class AddBtn extends React.Component {
     }
 }
 
-export default AddBtn;
+export default FooterInput;

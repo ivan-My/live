@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./style.scss";
 import { strArr } from "../../../utils/utils";
 
-class Top extends React.Component {
+class Header extends React.Component {
   render() {
     const { data } = this.props;
     if (Object.keys(data).length === 0) {
@@ -37,4 +37,4 @@ class Top extends React.Component {
   }
 }
 
-export default Top;
+export default Header;

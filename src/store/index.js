@@ -6,6 +6,7 @@ import { userInfoRedurces } from "./userInfos";
 import { workDetailReducers } from "./workDetail";
 import { globalRedurces } from "./global";
 import {courseDetailRedurces} from './courseDetail.js';
+import {otherCourseRedurces} from "./otherCourse";
 
 
 const store = createStore(
@@ -16,6 +17,7 @@ const store = createStore(
     userInfos: userInfoRedurces,
     worksDetail: workDetailReducers,
     courseDetail: courseDetailRedurces,
+    otherCourse:otherCourseRedurces
   }), compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f

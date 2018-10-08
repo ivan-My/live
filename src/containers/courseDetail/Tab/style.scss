@@ -1,4 +1,3 @@
-
 .courseDetail-bar {
   :global {
     .am-list-item img {
@@ -11,13 +10,12 @@
     .am-list-body::after {
       opacity: 0;
     }
-    .am-badge-text{
+    .am-badge-text {
       border-radius: 3px;
     }
 
   }
   margin-top: .1rem;
-
   .htmlCon {
     width: 100%;
     align-items: center;
@@ -28,7 +26,7 @@
     padding-bottom: .6rem;
     overflow-x: hidden;
     line-height: 1.5;
-    img{
+    img {
       width: 100%;
     }
   }
@@ -41,16 +39,16 @@
     .end-time {
       color: #6f9cb9;
       font-size: 12px;
-      .badge-btn{
-        //margin-left: 12px;
-        //padding: 0 3px;
-        //background-color: #ff476f;
-        //border-radius: 2px;
-        //color: #ffffff;
-        //border: 1px solid #f19736;
+      .badge-btn {
       }
     }
   }
+}
+
+.foot-num {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .show {
@@ -68,7 +66,7 @@
     overflow-x: hidden;
     line-height: 1.5;
     margin-top: .2rem;
-    img{
+    img {
       width: 100%;
     }
   }

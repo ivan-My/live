@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../TopicList/style.scss';
-import {List} from "../List";
+import {List_tpl} from "../List_tpl";
 
 class TeachList extends React.Component {
     render() {
@@ -15,7 +15,7 @@ class TeachList extends React.Component {
                 </div>
                 {
                     data.map(item =>{
-                        return List(item)
+                        return List_tpl(item)
                     })
                 }
             </div>

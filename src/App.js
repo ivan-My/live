@@ -6,7 +6,7 @@ import "./utils/rem";
 import store from "./store";
 import { getUserInfos } from "./api";
 import FooterBar from "./components/FooterBar";
-import { Home, Works, My, CourseDetail, WorkDetail } from "./loadRouter";
+import { Home, Works, My, CourseDetail, WorkDetail, OtherCourse } from "./loadRouter";
 
 class App extends Component {
   static onRedirct() {
@@ -15,13 +15,12 @@ class App extends Component {
 
   componentDidMount() {
     //flexbale 布局
-    let cookie = "rvz3j1jvfy2ta3kw0pxzp4oz";
-    let testCookie = "cpqpfko3pnmfbzxik3zk0wdl";
+    let cookie = "tcrfam42oulokkajp0iclcg0";
+    let testCookie = "znjjr3w350uujpj0xn3esoms";
     document.cookie = "ASP.NET_SessionId=" + cookie;
     getUserInfos().then(res => {
       //console.log(res.Data);
     });
-    console.log();
   }
 
   componentWillUpdate(nextprops) {
@@ -38,6 +37,7 @@ class App extends Component {
             <Route path="/my" exact component={My}/>
             <Route path="/works" exact component={Works}/>
             <Route path="/courseDetail/:id" exact component={CourseDetail}/>
+            <Route path="/otherCourse/:id" exact component={OtherCourse}/>
             <Route path="/workDetail/:id" exact component={WorkDetail}/>
             <FooterBar/>
           </React.Fragment>

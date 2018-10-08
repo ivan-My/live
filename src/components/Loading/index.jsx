@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.scss';
 export default function Loading() {
-    const info = "加载中";
+    const info = "Loading...";
     return (
         <div className={styles.loading}>
             <div className={styles["loading-text"]}>

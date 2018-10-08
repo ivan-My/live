@@ -3,11 +3,12 @@ import { setTitle } from "../../utils/utils";
 import { connect } from "react-redux";
 import { getCourseWorkQueryByIdData } from "../../store/workDetail";
 import BackHome from "../../components/BackHome";
-import Top from "./Top";
+import Header from "./Header";
 import TeachList from "./TeachList";
 import TopicList from "./TopicList";
-import AddBtn from "./AddBtn";
-import Input from "./Input";
+import FooterBtn from "./FooterBtn";
+import FooterInput from "./FooterInput";
+import DocumentTitle from "react-document-title";
 
 
 const mapState = (state) => ({
@@ -42,16 +43,16 @@ class WorkDetail extends React.Component {
   render() {
     const { queryList } = this.props;
     setTitle(queryList.Title);
+
     return (
       <div className="work-detail">
+        {/*<DocumentTitle title={queryList.Title } />*/}
         <BackHome/>
-        <Top data={queryList}/>
+        <Header data={queryList}/>
         <TeachList data={queryList.TeacherCommentDataList}/>
         <TopicList id={this.props.match.params.id}/>
-        <AddBtn id={this.props.match.params.id}
-                change={this.changeInput}
-        />
-        {this.state.isInput ? <Input id={this.props.match.params.id} change={this.changeInput}/> : null}
+        <FooterBtn id={this.props.match.params.id} change={this.changeInput}/>
+        {this.state.isInput ? <FooterInput id={this.props.match.params.id} change={this.changeInput}/> : null}
       </div>
     );
   }

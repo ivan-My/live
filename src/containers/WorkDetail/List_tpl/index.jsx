@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.scss'
 
-export const List = (item) => {
+export const List_tpl = (item) => {
     return (
         <div className={styles["comment-list"]}
              key={item.CommentId}>

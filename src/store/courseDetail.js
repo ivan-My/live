@@ -1,13 +1,15 @@
-import { getEnterCourseGroup,getTuanQueryList } from "../api";
+import { getEnterCourseGroup, getTuanQueryList } from "../api";
 
 const types = {
   INIT_COURSE_DETAIL: "ini_course_detail",
-  INIT_TUAN_LIST:"init_tuan_list"
+  INIT_TUAN_LIST: "init_tuan_list",
+  TOGGLE_DRAW: "toggle_draw"
 };
 
 const defaultState = {
-  courseDetailData: [],
-  tuanListData:{}
+  courseDetailData: {},
+  tuanListData: {},
+  isDrawLoad: false
 };
 
 export const courseDetailRedurces = (state = defaultState, action) => {
@@ -16,6 +18,9 @@ export const courseDetailRedurces = (state = defaultState, action) => {
       return { ...state, courseDetailData: action.payload };
     case types.INIT_TUAN_LIST:
       return { ...state, tuanListData: action.payload };
+    case types.TOGGLE_DRAW:
+      const isLoad = state.isDrawLoad;
+      return { ...state, isDrawLoad: !isLoad };
     default:
       return state;
   }
@@ -30,8 +35,13 @@ export const actions = {
   },
   initTuanList: (params) => {
     return {
-      payload: params,
-      type: types.INIT_TUAN_LIST
+      type: types.INIT_TUAN_LIST,
+      payload: params
+    };
+  },
+  toggleDraw: () => {
+    return {
+      type: types.TOGGLE_DRAW
     };
   }
 };
@@ -39,7 +49,7 @@ export const actions = {
 export const getEnterCourseGroupData = (params) => {
   return (dispatch) => {
     getEnterCourseGroup(params).then(res => {
-      dispatch(actions.initData(res.Data))
+      dispatch(actions.initData(res.Data));
     });
   };
 };
@@ -47,7 +57,7 @@ export const getEnterCourseGroupData = (params) => {
 export const getTuanQueryListData = (params) => {
   return (dispatch) => {
     getTuanQueryList(params).then(res => {
-      dispatch(actions.initData(res.Data))
+      dispatch(actions.initTuanList(res.Data));
     });
   };
 };
