@@ -3,6 +3,7 @@ import styles from "./style.scss";
 import Countdown from "../../../components/Countdown";
 import BackHome from "../../../components/BackHome";
 
+
 class TopCon extends React.Component {
   render() {
     const { d } = this.props;

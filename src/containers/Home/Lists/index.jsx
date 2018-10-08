@@ -5,7 +5,7 @@ import { List, Badge } from "antd-mobile";
 import CSSModules from "react-css-modules";
 import styles from "./style.scss";
 import { getSumGetChannelCourseGroupData } from "../../../store/home";
-import Loading from "../../../components/Loading";
+import NullData from "../NullData";
 
 /**
  * @constructor <Lists />
@@ -63,18 +63,17 @@ class Lists extends React.Component {
     });
   }
 
-  renderNullData(index) {
-    return <div>
-      {index}没有数据
-    </div>;
+  renderNullData(group, group1, group2, index) {
+    if (group.length === 0 && group1.length === 0 && group2.length === 0 && index !== 1) {
+      return <NullData index={index}/>;
+    }
   }
 
   render() {
-
     const { group, group1, group2, selectedTab } = this.props;
-
     return (
       <div>
+        {this.renderNullData(group, group1, group2, selectedTab)}
         {
           group.length > 0 &&
           <List className={styles["my-list"]} renderHeader={() => "好课上新"}>
@@ -93,6 +92,7 @@ class Lists extends React.Component {
             {this.renderItems(group)}
           </List>
         }
+
       </div>
     );
   }

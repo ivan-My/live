@@ -3,7 +3,6 @@
  * http://cssreset.com
  */
 
-
 html,
 body,
 div,
@@ -85,14 +84,13 @@ mark,
 audio,
 video,
 input {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font-weight: normal;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -106,52 +104,52 @@ header,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
-    background: #d6f1ff !important;
+  line-height: 1;
+  background: #d6f1ff !important;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: none;
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
 
 /* custom */
 
 a {
-    color: #818181;
-    text-decoration: none;
-    -webkit-backface-visibility: hidden;
+  color: #818181;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
 }
 
 html,
 body {
-    width: 100%;
-    background: #d6f1ff;
-    color: #444444;
-    font-size: 14px;
-    font-weight: 200;
-    font-family: 'PingFang SC', 'STHeitiSC-Light', 'Arial, Helvetica, sans-serif';
+  width: 100%;
+  background: #d6f1ff;
+  color: #444444;
+  font-size: 14px;
+  font-weight: 200;
+  font-family: 'PingFang SC', 'STHeitiSC-Light', 'Arial, Helvetica, sans-serif';
 }
 
-@media all and (min-width:768px) {
-    body{
-         max-width: 768px !important;
-    }
+@media all and (min-width: 768px) {
+  body {
+    max-width: 768px !important;
+  }
 }
+

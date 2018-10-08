@@ -117,7 +117,7 @@ export default class Lists extends React.Component {
       return this.renderRow(d);
     };
     return (
-      <div>
+      <React.Fragment>
         <ListView
           styleName="my-listView"
           ref={el => this.lv = el}
@@ -133,7 +133,8 @@ export default class Lists extends React.Component {
         />
         {this.props.videoUrl !== "" ? <VideoAlert src={this.props.videoUrl}
                                                   getvideoUrl={this.props.getvideoUrl}/> : null}
-      </div>
+                                                  }
+      </React.Fragment>
     );
   }
 }

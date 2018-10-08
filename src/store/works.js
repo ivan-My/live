@@ -56,7 +56,7 @@ export const actions = {
 export const getCourseWorkData = (params, pageIndex, tabIndex) => {
     return (dispatch) => {
         getCourseWork(params).then(res => {
-            dispatch(actions.courseWorks(res.data.Data.Data, pageIndex, tabIndex))
+            dispatch(actions.courseWorks(res.Data.Data, pageIndex, tabIndex))
         })
 
     };

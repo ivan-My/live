@@ -1,6 +1,10 @@
 import axios from "axios";
 import Https from './http';
 
+export const getUserInfos = (params) => {
+  return Https.get('/My/GetUserProfile?', params)
+};
+
 export const getQueryList = (params) => {
     return Https.get('/News/QueryList', params)
 };
@@ -16,23 +20,18 @@ export const getCourseChannelQueryList = (params) => {
 export const getCourseGroupQueryList = (params) => {
     return Https.get('/CourseGroup/QueryList', params)
 };
-// export const getCourseWork = (params) => {
-//     return Https.get('/CourseWork/QueryList', params)
-// };
 export const getCourseWork = (params) => {
-   return axios.get('/CourseWork/QueryList', {params:params})
-
+    return Https.get('/CourseWork/QueryList', params)
 };
-
-
-export const getUserInfos = (params) => {
-    return Https.get('/My/GetUserProfile?', params)
-};
+// export const getCourseWork = (params) => {
+//    return axios.get('/CourseWork/QueryList', {params:params})
+//
+// };
 
 export const getEnterCourseGroup = (params) => {
     return Https.get('/My/EnterCourseGroup', params)
 };
-
+//课程详情团列表
 export const getTuanQueryList = (params) => {
     return Https.get('/Tuan/QueryList', params)
 };

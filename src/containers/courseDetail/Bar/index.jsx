@@ -4,6 +4,12 @@ import cls from 'classnames';
 import {Tabs, Badge, List} from 'antd-mobile';
 import styles from './style.scss'
 
+/**
+ * @constructor <Bar />
+ * @description 中间tabs
+ */
+
+
 const tabs = [
     {title: '课程简介', sub: '1'},
     {title: '课程目录', sub: '2'},

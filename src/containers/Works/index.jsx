@@ -20,11 +20,11 @@ class Works extends React.Component {
     }
     render() {
         return (
-            <div>
+          <React.Fragment>
                 <DocumentTitle title="作品"/>
                 <TopBar/>
                 <List/>
-            </div>
+          </React.Fragment>
         );
     }
 }

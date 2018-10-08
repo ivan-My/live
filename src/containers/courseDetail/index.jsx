@@ -1,31 +1,32 @@
 import React from "react";
-import { getEnterCourseGroup, getTuanQueryList } from "../../api";
-import { setTitle } from "../../utils/utils";
+import { connect } from "react-redux";
+import { getTuanQueryList } from "../../api";
+import DocumentTitle from "react-document-title";
 import TopCon from "./TopCon";
 import GroupList from "./GroupList";
 import Bar from "./Bar";
 import DrawerList from "./DrawerList";
+import { getEnterCourseGroupData } from "../../store/courseDetail.js";
 
 /**
  * @constructor <CourseDetail />
  * @description 课程详情页
  */
 
+@connect(
+  state => state.courseDetail,
+  { getEnterCourseGroupData }
+)
 class CourseDetail extends React.Component {
   state = {
-    data: {},
     tuanQueryList: [],
     open: false
   };
 
   componentDidMount() {
     let id = this.props.match.params.id;
-    getEnterCourseGroup({
+    this.props.getEnterCourseGroupData({
       CourseGroupId: id
-    }).then(res => {
-      this.setState({
-        data: res.Data
-      });
     });
     getTuanQueryList({
       CourseGroupId: id,
@@ -40,38 +41,45 @@ class CourseDetail extends React.Component {
 
   onOpenChange = () => {
     this.setState({ open: !this.state.open }, () => {
-      console.log(this.state.open);
+
     });
   };
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.props.courseDetailData !== nextProps.courseDetailData;
+  // }
+
   render() {
-    const d = this.state.data;
+    const d = this.props.courseDetailData;
     if (Object.keys(d).length === 0) {
       return null;
     }
-    setTitle(d.CourseGroupName);
     return (
       <div>
+        <DocumentTitle title={d.CourseGroupName}/>
         <TopCon d={d}/>
         {
-          d.TuanOrderList.length > 0 ? <GroupList data={d.TuanOrderList}
-                                                  change={this.onOpenChange}
-                                                  show={this.state.open}
-          /> : null
+          d.TuanOrderList.length > 0 &&
+          <GroupList data={d.TuanOrderList}
+                     change={this.onOpenChange}
+                     show={this.state.open}
+                     tuanNum={d.TuanOrderCount}
+          />
         }
-        <Bar data={d.Introduce}
-             listData={d.CourseDataList}
-        />
+        <Bar data={d.Introduce} listData={d.CourseDataList}/>
         {
-          this.state.open ?
-            <DrawerList show={this.state.open}
-                        data={this.state.tuanQueryList}
-                        change={this.onOpenChange}
-            /> : null
+          this.state.open &&
+          <DrawerList show={this.state.open}
+                      data={this.state.tuanQueryList}
+                      change={this.onOpenChange}
+                      id={this.props.match.params.id}
+          />
         }
       </div>
     );
   }
 }
+
+
 
 export default CourseDetail;

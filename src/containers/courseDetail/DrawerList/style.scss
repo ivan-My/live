@@ -1,15 +1,17 @@
 .course-detail-drawer{
+  position: fixed;
+  z-index: 1;
   :global {
     .am-drawer-sidebar {
       width: 7.5rem;
       overflow: hidden;
+      background:#ffffff;
     }
   }
   .close-drawer{
 	  position:absolute;
 	  right:.4rem;
 	  top:.4rem;
-
   }
 
 }

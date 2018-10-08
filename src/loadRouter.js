@@ -1,29 +1,30 @@
-
-import Loadable from 'react-loadable';
-import Loading from './components/Loading';
+import Loadable from "react-loadable";
+import Loading from "./components/Loading";
 
 
 export const Home = Loadable({
-    loader: () => import('./containers/Home'),
-    loading: Loading
+  loader: () => import("./containers/Home"),
+  loading: Loading
 });
 
 export const Works = Loadable({
-    loader: () => import('./containers/Works'),
-    loading: Loading
+  loader: () => import("./containers/Works"),
+  loading: Loading
 
 });
 export const My = Loadable({
-    loader: () => import('./containers/My'),
-    loading: Loading
+  loader: () => import("./containers/My"),
+  loading: Loading
 });
 
 export const CourseDetail = Loadable({
-    loader: () => import('./containers/courseDetail'),
-    loading: Loading
+  loader: () => import("./containers/courseDetail"),
+  loading: Loading,
+  delay: 300
 });
 
 export const WorkDetail = Loadable({
-    loader: () => import('./containers/WorkDetail'),
-    loading: Loading
+  loader: () => import("./containers/WorkDetail"),
+  loading: Loading,
+  delay: 300
 });
