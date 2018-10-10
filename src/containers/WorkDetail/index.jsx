@@ -1,13 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setTitle } from "../../utils/utils";
-import {
-  actions,
-  getAddLikeData,
-  getCourseWorkQueryByIdData,
-  getIsLikeData,
-  getRemoveLikeData
-} from "../../store/workDetail";
+import { getCourseWorkQueryByIdData } from "../../store/workDetail";
 import BackHome from "../../components/BackHome";
 import Header from "./Header";
 import TeachList from "./TeachList";
@@ -48,12 +42,12 @@ class WorkDetail extends React.Component {
     setTitle(queryList.Title);
     return (
       <div className="work-detail">
-        <BackHome/>
-        <Header data={queryList}/>
-        <TeachList data={queryList.TeacherCommentDataList}/>
-        {queryList.TeacherCommentDataList &&  <TopicList id={id}/>}
-        <FooterBtn id={id} likeNum={queryList.LikeCnt}/>
-        {isInput ? <FooterInput id={id}/> : null}
+        <BackHome />
+        <Header data={queryList} />
+        <TeachList data={queryList.TeacherCommentDataList} />
+        {queryList.TeacherCommentDataList && <TopicList id={id} />}
+        <FooterBtn id={id} likeNum={queryList.LikeCnt} />
+        {isInput ? <FooterInput id={id} /> : null}
       </div>
     );
   }

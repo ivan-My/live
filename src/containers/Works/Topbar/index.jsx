@@ -38,17 +38,17 @@ class TopBar extends React.Component {
     return (
       <div style={style}>
         <Tabs tabs={tabs}
-              initialPage={this.props.tabIndex}
-              swipeable
-              useOnPan={false}
-              onTabClick={(tab, index) => {
-                getTabIndex(index);
-                getCourseWorkData({
-                  pageIndex: 1,
-                  pageSize: pageSize,
-                  OrderType: index
-                }, 1, index);
-              }}
+          initialPage={this.props.tabIndex}
+          swipeable
+          useOnPan={false}
+          onTabClick={(tab, index) => {
+            getTabIndex(index);
+            getCourseWorkData({
+              pageIndex: 1,
+              pageSize: pageSize,
+              OrderType: index
+            }, 1, index);
+          }}
         />
       </div>
     );

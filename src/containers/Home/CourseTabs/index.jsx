@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { TabBar } from "antd-mobile";
 import styles from "./style.scss";
@@ -55,25 +55,27 @@ export default class CourseTabs extends React.Component {
       return (
         <TabBar.Item
           key={item.CourseChannelId}
-          title={<span style={{
-            color: item.Color,
-            opacity: selectedTab === item.CourseChannelId ? 1 : 0.5
-          }}>{item.ChannelName}</span>}
-          icon={<div style={{
-            width: "0.75rem",
-            height: "0.75rem",
-            background: `url(${item.IconImg}) center center /  21px 21px no-repeat`,
-            opacity: selectedTab === item.CourseChannelId ? 1 : 0.5,
-            backgroundSize: "contain"
-          }}
-          />
+          title={
+            <span style={{
+              color: item.Color,
+              opacity: selectedTab === item.CourseChannelId ? 1 : 0.5
+            }}
+            >{item.ChannelName}</span>}
+          icon={
+            <div style={{
+              width: "0.75rem",
+              height: "0.75rem",
+              background: `url(${item.IconImg}) center center /  21px 21px no-repeat`,
+              opacity: selectedTab === item.CourseChannelId ? 1 : 0.5,
+              backgroundSize: "contain"
+            }}
+            />
           }
           onPress={() => {
             this.props.selectBar(item.CourseChannelId);
             this.props.getSumGetChannelCourseGroupData({ CourseChannelId: item.CourseChannelId });
           }}
-        >
-        </TabBar.Item>
+        />
       );
     });
   }
@@ -90,9 +92,9 @@ export default class CourseTabs extends React.Component {
           width: "100%",
           height: "1.5rem",
           zIndex: "9"
-        } : null}>
-        <TabBar tabBarPosition="top"
-                noRenderContent="false">
+        } : null}
+      >
+        <TabBar tabBarPosition="top" noRenderContent="false">
           {this.renderItems(newTabsData, selectedTab)}
         </TabBar>
       </div>

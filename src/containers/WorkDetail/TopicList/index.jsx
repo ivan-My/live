@@ -24,7 +24,6 @@ class TopicList extends React.Component {
     index: 0,
     size: 5,
     hasMore: false
-
   };
 
   componentDidMount() {
@@ -61,7 +60,7 @@ class TopicList extends React.Component {
     });
   }
 
-  static formatDataSource(data) {
+   formatDataSource(data) {
     const _data = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     });
@@ -81,18 +80,17 @@ class TopicList extends React.Component {
         style={{ marginBottom: "1rem" }}
         className={styles["work-prompt"]}
         ref={el => this.lv = el}
-        dataSource={TopicList.formatDataSource(data)}
+        dataSource={this.formatDataSource(data)}
         renderHeader={() => <div className={styles["head"]}>评论</div>}
         renderFooter={() => (<div style={{ padding: 15, textAlign: "center" }}>
-          {this.state.isLoading ? <Loading/> : "没有数据了"}
+          {this.state.isLoading ? <Loading /> : "没有数据了"}
         </div>)}
         renderRow={row}
         useBodyScroll
         scrollRenderAheadDistance={1000}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={1}
-      >
-      </ListView>
+      />
     );
   }
 }

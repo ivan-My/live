@@ -1,26 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./style.scss";
-import { strArr } from "../../../utils/utils";
+import { strArr,isDataSize } from "../../../utils/utils";
+
+/**
+ * @constructor <Header />
+ * @description 上半部内容
+ */
 
 class Header extends React.Component {
+  renderImg(data) {
+    strArr(data.Image).map((item, index) => {
+      return (
+        <div className={styles.item} key={index}>
+          <img src={item} alt="" />
+        </div>
+      );
+    })
+  }
   render() {
     const { data } = this.props;
-    if (Object.keys(data).length === 0) {
-      return null;
-    }
+    if (isDataSize(data)) return null;
     return (
       <div className={styles["work-detail-top"]}>
         <div className={styles["work-img-list"]}>
-          {
-            strArr(data.Image).map((item, index) => {
-              return (
-                <div className={styles.item} key={index}>
-                  <img src={item} alt=""/>
-                </div>
-              );
-            })
-          }
+          {this.renderImg(data)}
         </div>
         <div className={styles.tit}>
           <p>{data.Title}</p>

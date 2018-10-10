@@ -20,7 +20,7 @@ const defaultState = fromJS({
 export const workerRedurces = (state = defaultState, action) => {
   switch (action.type) {
     case types.COURSE_WORK:
-      const datas = state.getIn([ "data"]).toJS();
+      const datas = state.getIn(["data"]).toJS();
       const data = datas.concat(action.payload);
       return state.merge({
         data: data,

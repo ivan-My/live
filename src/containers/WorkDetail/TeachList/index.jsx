@@ -3,7 +3,6 @@ import styles from "../TopicList/style.scss";
 import { List_tpl } from "../List_tpl";
 
 class TeachList extends React.Component {
-
   render() {
     const { data } = this.props;
     if (data === undefined || data.length === 0) {

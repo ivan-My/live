@@ -36,9 +36,11 @@ export default class Https {
           const result = data.Message || data;
           resolve({ data: result });
         } else {
+          console.log(data);
           reject({ err: data.Message, name: data.name || "" });
         }
       }).catch((err) => {
+        console.log(err)
         reject({ err: JSON.stringify(err) });
       });
     });

@@ -9,13 +9,12 @@ import { actions } from "../../../store/courseDetail";
  * @description 中间团购列表
  */
 
-
 const mapDispatchToProps = (dispatch) => ({
   toggleDraw: () => dispatch(actions.toggleDraw())
 });
 
 @connect(
-  state => state.courseDetail,
+  null,
   mapDispatchToProps
 )
 class GroupList extends React.Component {
@@ -23,7 +22,8 @@ class GroupList extends React.Component {
     const { data } = this.props;
     return (
       <div className={styles["collage-lists"]}>
-        <p className={styles.tit}>离拼团活动结束还剩</p>
+        <div className={styles.tit}>离拼团活动结束还剩
+        </div>
         <div className={styles["more-tuan"]}>
           <span>{data.length}人正在开团拼单，可直接参与</span>
           {!this.props.isDrawLoad && <span onClick={() => {
@@ -41,7 +41,7 @@ class GroupList extends React.Component {
                     还差{count}人
                     <br/>剩余
                     <Countdown className="Error-time"
-                               startTime={1531891577}
+                               startTime={Math.round(item.TuanEndTime / 1000)}
                                endTime={1538262926}
                                isLoad={0}
                                msg="倒计时结束了"

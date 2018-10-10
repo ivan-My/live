@@ -7,6 +7,7 @@ import Tab from "./Tab";
 import DrawerList from "./DrawerList";
 import { getEnterCourseGroupData } from "../../store/courseDetail.js";
 import { clearState } from "../../store/clearState";
+import FooterBar from './FooterBar';
 
 /**
  * @constructor <CourseDetail />
@@ -49,9 +50,10 @@ class CourseDetail extends React.Component {
       <React.Fragment>
         <DocumentTitle title={data.CourseGroupName}/>
         <Header d={data}/>
-        {data.TuanOrderList.length > 0 && <GroupList data={data.TuanOrderList} tuanNum={data.TuanOrderCount}/>}
+        {data.IsTuan === 'T' && <GroupList data={data.TuanOrderList} tuanNum={data.TuanOrderCount}/>}
         <Tab data={data.Introduce} listData={data.CourseDataList}/>
         {this.props.isDrawLoad && <DrawerList id={this.props.match.params.id}/>}
+        {/*<FooterBar />*/}
       </React.Fragment>
     );
   }

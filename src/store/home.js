@@ -15,45 +15,41 @@ const types = {
 };
 
 const defaultState = fromJS({
-    bannerData: [],
-    tabsData: [],
-    selectedTab: 1,
-    scrollLoad: false,
-    group: [],
-    group1: [],
-    group2: []
-  });
+  bannerData: [],
+  tabsData: [],
+  selectedTab: 1,
+  scrollLoad: false,
+  hotData: [],
+  newData: [],
+  recommendData: []
+});
 
 const addGroupList = (state, action) => {
 
   return state.merge({
-    group: action.payload.DataCourseGroup_Hot.Data.Data,
-    group1: action.payload.DataCourseGroup_New.Data.Data,
-    group2: action.payload.DataCourseGroup_New.Data.Data
+    hotData: action.payload.DataCourseGroup_Hot.Data.Data,
+    newData: action.payload.DataCourseGroup_New.Data.Data,
+    recommendData: action.payload.DataCourseGroup_New.Data.Data
   });
 };
 export const homeRedurces = (state = defaultState, action) => {
   switch (action.type) {
     case types.BANNer_DATA:
       return state.merge({
-        bannerData: action.payload,
+        bannerData: action.payload
       });
-    //  return { ...state, bannerData: action.payload };
     case types.COURSE_TABS:
-    //  return { ...state, tabsData: action.payload };
       return state.merge({
-        tabsData: action.payload,
+        tabsData: action.payload
       });
     case types.TOGGLE_SCROLL_TOP:
-     // return { ...state, scrollLoad: action.show };
       return state.merge({
-        scrollLoad: action.show,
+        scrollLoad: action.show
       });
     case types.SELECT_BAR:
-     // return { ...state, selectedTab: action.index };
       return state.merge({
-      selectedTab: action.index,
-    });
+        selectedTab: action.index
+      });
     case types.GROUP:
       return addGroupList(state, action);
 

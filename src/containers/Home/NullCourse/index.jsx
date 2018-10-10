@@ -28,7 +28,7 @@ class NullCourse extends React.Component {
     return (
       <div className={styles["no-course"]}>
         <div className={styles["no-img"]}>
-          <img src={NullCourse.toImg(index)} alt=""/>
+          <img src={NullCourse.toImg(index)} alt="" />
         </div>
         <p>更多好课正在赶来</p>
         <p>同学们敬请期待</p>
