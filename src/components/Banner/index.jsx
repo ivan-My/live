@@ -14,7 +14,6 @@ export default class Banner extends React.Component {
     state = {
         imgHeight: 150,
     };
-
     render() {
         return (
             <WingBlank>

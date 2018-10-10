@@ -1,11 +1,11 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./style.scss";
 import Countdown from "../../../components/Countdown";
 import BackHome from "../../../components/BackHome";
 
 
-class TopCon extends React.Component {
+class Header extends React.Component {
   render() {
     const { d } = this.props;
     return (
@@ -16,8 +16,8 @@ class TopCon extends React.Component {
         </div>
         <div className={styles.item}>
           <Countdown className="Error-time"
-                     startTime={1531891577}
-                     endTime={1538262926}
+                     startTime={Math.round(d.FirstCourseTime / 1000)}
+                     endTime={1539599533}
                      isLoad={1}
                      msg="倒计时结束了"
           />
@@ -35,7 +35,7 @@ class TopCon extends React.Component {
             {d.HostData.HostName}<span>&nbsp;|&nbsp;</span>共{d.CourseCnt}两节课
           </div>
           <div className={styles["hose-go"]}>
-            <Link to={"/otherCourse/"+d.HostAccountId}>主播其他课程推荐 <span> > </span></Link>
+            <Link to={"/otherCourse/" + d.HostAccountId}>主播其他课程推荐 <span> > </span></Link>
           </div>
         </div>
       </div>
@@ -43,4 +43,4 @@ class TopCon extends React.Component {
   }
 }
 
-export default TopCon;
+export default Header;

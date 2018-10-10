@@ -20,17 +20,14 @@ export const My = Loadable({
 export const CourseDetail = Loadable({
   loader: () => import("./containers/courseDetail"),
   loading: Loading,
-  delay: 300
 });
 
 export const OtherCourse = Loadable({
   loader: () => import("./containers/OtherCourse"),
   loading: Loading,
-  delay: 300
 });
 
 export const WorkDetail = Loadable({
   loader: () => import("./containers/WorkDetail"),
   loading: Loading,
-  delay: 300
 });

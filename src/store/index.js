@@ -1,4 +1,5 @@
-import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import {combineReducers} from "redux-immutable"
+import { createStore,compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { homeRedurces } from "./home";
 import { workerRedurces } from "./works";

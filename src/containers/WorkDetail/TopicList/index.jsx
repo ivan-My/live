@@ -9,18 +9,13 @@ import { getCommentQueryList } from "../../../api";
 
 /**
  * @constructor <TopicList />
- * @description 详情页课程目录
+ * @description 评论列表
  */
 
-const mapState = (state) => ({
-  commentlist: state.worksDetail.getIn(["commentlist"]).toJS()
-});
-
 @connect(
-  mapState,
+  null,
   { getCourseWorkQueryByIdData, getCommentQueryListData }
 )
-
 class TopicList extends React.Component {
   state = {
     data: [],
@@ -66,26 +61,27 @@ class TopicList extends React.Component {
     });
   }
 
+  static formatDataSource(data) {
+    const _data = new ListView.DataSource({
+      rowHasChanged: (row1, row2) => row1 !== row2
+    });
+    return _data.cloneWithRows(data);
+  }
+
   render() {
     const data = this.state.data;
     if (Object.keys(data).length === 0) {
       return null;
     }
-    const datas = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2
-    });
-    const dataSource = datas.cloneWithRows(data);
     const row = (item) => {
       return List_tpl(item);
     };
     return (
       <ListView
-        style={{
-          marginBottom: "1rem"
-        }}
+        style={{ marginBottom: "1rem" }}
         className={styles["work-prompt"]}
         ref={el => this.lv = el}
-        dataSource={dataSource}
+        dataSource={TopicList.formatDataSource(data)}
         renderHeader={() => <div className={styles["head"]}>评论</div>}
         renderFooter={() => (<div style={{ padding: 15, textAlign: "center" }}>
           {this.state.isLoading ? <Loading/> : "没有数据了"}

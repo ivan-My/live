@@ -13,7 +13,7 @@ class Header extends React.Component {
       <div className={styles["work-detail-top"]}>
         <div className={styles["work-img-list"]}>
           {
-            strArr(data.Image).map((item, index, array) => {
+            strArr(data.Image).map((item, index) => {
               return (
                 <div className={styles.item} key={index}>
                   <img src={item} alt=""/>
@@ -24,7 +24,7 @@ class Header extends React.Component {
         </div>
         <div className={styles.tit}>
           <p>{data.Title}</p>
-          <div>来自：{data.UserData.NickName} {data.CreateTime}</div>
+          <div>来自：{data.UserData.NickName} {data.CreateTime.substr(0, 10)}</div>
         </div>
         <Link to={"/courseDetail/" + data.CourseGroupId}>
           <div className={styles["work-name"]}>

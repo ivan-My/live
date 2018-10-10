@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { TabBar } from "antd-mobile";
 import styles from "./style.scss";
@@ -9,6 +9,14 @@ import { getCourseTabsData, getSumGetChannelCourseGroupData, actions } from "../
  * @description 首页中间分类tabs
  */
 
+
+const mapStateToProps = (state) => {
+  return {
+    tabsData: state.getIn(["home", "tabsData"]),
+    selectedTab: state.getIn(["home", "selectedTab"]),
+    scrollLoad: state.getIn(["home", "scrollLoad"])
+  };
+};
 const mapDispatchToProps = (dispatch) => ({
   getCourseTabsData: () => dispatch(getCourseTabsData()),
   toggleTopShow: (show) => dispatch(actions.toggleTopShow(show)),
@@ -16,11 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   getSumGetChannelCourseGroupData: (params) => dispatch(getSumGetChannelCourseGroupData(params))
 });
 @connect(
-  state => ({
-    tabsData: state.home.tabsData,
-    selectedTab: state.home.selectedTab,
-    scrollLoad: state.home.scrollLoad
-  }),
+  mapStateToProps,
   mapDispatchToProps
 )
 export default class CourseTabs extends React.Component {
@@ -76,6 +80,7 @@ export default class CourseTabs extends React.Component {
 
   render() {
     const { tabsData, selectedTab, scrollLoad } = this.props;
+    const newTabsData = tabsData.toJS();
     return (
       <div
         className={styles["course-tabs"]}
@@ -88,7 +93,7 @@ export default class CourseTabs extends React.Component {
         } : null}>
         <TabBar tabBarPosition="top"
                 noRenderContent="false">
-          {this.renderItems(tabsData, selectedTab)}
+          {this.renderItems(newTabsData, selectedTab)}
         </TabBar>
       </div>
     );

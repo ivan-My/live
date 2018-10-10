@@ -1,63 +1,73 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { List, Badge } from "antd-mobile";
+import { List } from "antd-mobile";
 import CSSModules from "react-css-modules";
 import styles from "./style.scss";
 import { getSumGetChannelCourseGroupData } from "../../../store/home";
-import NullData from "../NullData";
-import {CourseList} from "../../../components/CourseList";
+import { CourseList } from "../../../components/CourseList";
+import NullCourse from "../NullCourse";
 
 /**
  * @constructor <Lists />
  * @description 作品list
  */
 
+const mapStateToProps = (state) => {
+  return {
+    group: state.getIn(["home", "group"]),
+    group1: state.getIn(["home", "group1"]),
+    group2: state.getIn(["home", "group2"]),
+    selectedTab: state.getIn(["home", "selectedTab"])
+  };
+};
+
 @connect(
-  state => state.home,
+  mapStateToProps,
   { getSumGetChannelCourseGroupData }
 )
 @CSSModules(styles)
 class Lists extends React.Component {
-  componentDidMount() {
-    let id = this.props.selectedTab;
-    this.props.getSumGetChannelCourseGroupData({ CourseChannelId: id });
-  }
-
   static renderItems(data) {
     return data.map((item) => {
-     // return <CourseList data={item} key={item.CourseGroupId}/>;
-      return CourseList(item)
+      return CourseList(item);
     });
   }
 
   static renderNullData(group, group1, group2, index) {
     if (group.length === 0 && group1.length === 0 && group2.length === 0 && index !== 1) {
-      return <NullData index={index}/>;
+      return <NullCourse index={index}/>;
     }
+  }
+
+  componentDidMount() {
+    let id = this.props.selectedTab;
+    this.props.getSumGetChannelCourseGroupData({ CourseChannelId: id });
   }
 
   render() {
     const { group, group1, group2, selectedTab } = this.props;
+    const newGroup = group.toJS();
+    const newGroup1 = group1.toJS();
+    const newGroup2 = group2.toJS();
     return (
       <div>
-        {Lists.renderNullData(group, group1, group2, selectedTab)}
+        {Lists.renderNullData(newGroup, newGroup1, newGroup2, selectedTab)}
         {
-          group.length > 0 &&
+          newGroup.length > 0 &&
           <List className={styles["my-list"]} renderHeader={() => "好课上新"}>
-            {Lists.renderItems(group1)}
+            {Lists.renderItems(newGroup1)}
           </List>
         }
         {
-          group1.length > 0 &&
+          newGroup1.length > 0 &&
           <List className={styles["my-list"]} renderHeader={() => "人气推荐"}>
-            {Lists.renderItems(group2)}
+            {Lists.renderItems(newGroup2)}
           </List>
         }
         {
-          group.length > 0 &&
+          newGroup2.length > 0 &&
           <List className={styles["my-list"]} renderHeader={() => "更多严选"} style={{ paddingBottom: "2rem" }}>
-            {Lists.renderItems(group)}
+            {Lists.renderItems(newGroup)}
           </List>
         }
 

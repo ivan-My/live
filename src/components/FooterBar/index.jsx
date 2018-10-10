@@ -1,19 +1,26 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {TabBar} from 'antd-mobile';
-import {withRouter} from 'react-router-dom';
+import { connect } from "react-redux";
+import { TabBar } from 'antd-mobile';
+import { withRouter } from 'react-router-dom';
 import styles from './style.scss';
-import {action} from '../../store/global';
+import { action } from '../../store/global';
+
+const mapStateToProps = (state) => {
+  return {
+    tabs: state.getIn(["global","tabs"]).toJS(),
+    selectedTab: state.getIn(["global","selectedTab"])
+  };
+};
 
 @withRouter
 @connect(
-    state => state.global
+    //state => state.global
+mapStateToProps
 )
 export default class FootTabs extends React.Component {
     componentWillMount() {
         this.changeTabs();
     }
-
     changeTabs() {
         let path = this.props.location.pathname;
         let index = 0;
@@ -38,12 +45,12 @@ export default class FootTabs extends React.Component {
                 width: '22px',
                 height: '22px',
                 background: `url(${icon}) center center /  21px 21px no-repeat`,
-            }}/>
+            }} />
         )
     }
 
     renderItems() {
-        const {tabs, selectedTab} = this.props;
+        const { tabs, selectedTab } = this.props;
         return tabs.map((item) => {
             return (
                 <TabBar.Item

@@ -8,12 +8,30 @@ let add0 = m => {
 class Countdown extends Component {
   state = {     // 通过state来定义当前组件内部自己的数据
     clocker: "",
-    timeobj: {}
+    timeobj: {
+    }
   };
-
   componentDidMount = () => {
-    // this.props.endTime 获取父组件中的数据
-    let timeLag = parseInt(this.props.endTime, 10) - parseInt(this.props.startTime, 10);
+    let date = Math.round(new Date() / 1000);
+    let timeLag = parseInt(this.props.endTime, 10) - parseInt(date, 10);
+    let seconds = timeLag;
+    if (timeLag % 60 < 10) {
+      seconds = "0" + timeLag % 60;
+    } else {
+      seconds = timeLag % 60;
+    }
+    let timeobj = {
+      seconds: seconds,
+      minutes: Math.floor(timeLag / 60) % 60,
+      hours: Math.floor(timeLag / 60 / 60) % 24,
+      days: Math.floor(timeLag / 60 / 60 / 24),
+      weeks: Math.floor(timeLag / 60 / 60 / 24 / 7),
+      months: Math.floor(timeLag / 60 / 60 / 24 / 30),
+      years: Math.floor(timeLag / 60 / 60 / 24 / 365)
+    };
+    this.setState({
+      timeobj
+    });
     window.timer = setInterval(() => {       // 创建倒计时定时器
       let time = timeLag--;              // time为两个时间戳之间相差的秒数
       let _clocker = "";                 // 打印出时间对象

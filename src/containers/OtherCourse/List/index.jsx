@@ -1,17 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
-import { ListView} from "antd-mobile";
+import { ListView } from "antd-mobile";
 import { CourseList } from "../../../components/CourseList";
 import { getCourseGroupQueryListData } from "../../../store/otherCourse";
+import { clearState } from "../../../store/clearState";
 
 /**
  * @constructor <List_tpl/>
  * @description <课程列表>
  */
 
+
+function mapStateToProps(state) {
+  return {
+    otherCourseData: state.getIn(["otherCourse", "otherCourseData"]).toJS()
+  };
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  clearState: () => dispatch(clearState()),
+  getCourseGroupQueryListData: (params) => dispatch(getCourseGroupQueryListData(params))
+});
+
+
 @connect(
-  state => state.otherCourse,
-  { getCourseGroupQueryListData }
+  mapStateToProps,
+  mapDispatchToProps
 )
 class List extends React.Component {
   componentDidMount() {
@@ -20,6 +34,10 @@ class List extends React.Component {
       pageIndex: 1,
       pageSize: 8
     });
+  }
+
+  componentWillUnmount() {
+    this.props.clearState();
   }
 
   onEndReached = () => {

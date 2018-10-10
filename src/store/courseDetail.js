@@ -1,26 +1,38 @@
 import { getEnterCourseGroup, getTuanQueryList } from "../api";
-
+import { CLEAR_STATE } from "./clearState";
+import { fromJS } from "immutable";
 const types = {
   INIT_COURSE_DETAIL: "ini_course_detail",
   INIT_TUAN_LIST: "init_tuan_list",
   TOGGLE_DRAW: "toggle_draw"
 };
 
-const defaultState = {
+const defaultState = fromJS({
   courseDetailData: {},
   tuanListData: {},
   isDrawLoad: false
-};
+});
 
 export const courseDetailRedurces = (state = defaultState, action) => {
   switch (action.type) {
     case types.INIT_COURSE_DETAIL:
-      return { ...state, courseDetailData: action.payload };
+      return state.merge({
+        courseDetailData: action.payload ,
+      });
+   //   return { ...state, courseDetailData: action.payload };
     case types.INIT_TUAN_LIST:
-      return { ...state, tuanListData: action.payload };
+      return state.merge({
+        tuanListData: action.payload ,
+      });
+     // return { ...state, tuanListData: action.payload };
     case types.TOGGLE_DRAW:
       const isLoad = state.isDrawLoad;
-      return { ...state, isDrawLoad: !isLoad };
+      return state.merge({
+        isDrawLoad: isLoad
+      });
+    //  return { ...state, isDrawLoad: !isLoad };
+    case CLEAR_STATE:
+      return defaultState;
     default:
       return state;
   }

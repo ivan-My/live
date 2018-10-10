@@ -11,8 +11,14 @@ import List from "./Lists";
  * @description 作品
  */
 
+const mapStateToProps = (state) => {
+  return {
+    banner: state.getIn(["home","bannerData"]).toJS()
+  };
+};
+
 @connect(
-  state => state.home,
+  mapStateToProps,
   { getQueryListData }
 )
 class Home extends React.Component {
@@ -25,11 +31,11 @@ class Home extends React.Component {
   }
 
   render() {
-    const { bannerData } = this.props;
+    const { banner } = this.props;
     return (
       <div>
         <DocumentTitle title="海淘好课"/>
-        <Banner data={bannerData}/>
+        <Banner data={banner}/>
         <CourseTabs/>
         <List/>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Header from './Header';
 import List from './List';
 
+
 /**
  * @constructor <OtherCourse/>
  * @description <其他课程>

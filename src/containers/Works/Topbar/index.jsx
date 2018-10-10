@@ -1,7 +1,7 @@
 import React from "react";
-import {connect} from "react-redux";
-import {Tabs} from 'antd-mobile';
-import {getCourseWorkData, getTabIndex} from "../../../store/works";
+import { connect } from "react-redux";
+import { Tabs } from "antd-mobile";
+import { getCourseWorkData, getTabIndex } from "../../../store/works";
 
 
 /**
@@ -10,42 +10,49 @@ import {getCourseWorkData, getTabIndex} from "../../../store/works";
  */
 
 const tabs = [
-    {title: "推荐"},
-    {title: "最新"},
-    {title: "最热"},
+  { title: "推荐" },
+  { title: "最新" },
+  { title: "最热" }
 ];
 
 const style = {
-    width: "7.5rem",
-    position: "fixed",
-    top: "0",
-    zIndex: "1"
+  width: "7.5rem",
+  position: "fixed",
+  top: "0",
+  zIndex: "1"
+};
+
+const mapStateToProps = (state) => {
+  return {
+    tabIndex: state.getIn(["works", "tabIndex"])
+  };
 };
 
 @connect(
-    state => state.works,
-    {getCourseWorkData, getTabIndex}
+  mapStateToProps,
+  { getCourseWorkData, getTabIndex }
 )
 class TopBar extends React.Component {
-    render() {
-        return (
-            <div style={style}>
-                <Tabs tabs={tabs}
-                      initialPage={this.props.tabIndex}
-                      swipeable
-                      useOnPan={false}
-                      onTabClick={(tab, index) => {
-                          this.props.getTabIndex(index)
-                          this.props.getCourseWorkData({
-                              pageIndex: 1,
-                              pageSize: this.props.pageSize,
-                              OrderType: index
-                          }, 1, index);
-                      }}
-                />
-            </div>
-        )
-    }
+  render() {
+    const { getTabIndex, pageSize, getCourseWorkData } = this.props;
+    return (
+      <div style={style}>
+        <Tabs tabs={tabs}
+              initialPage={this.props.tabIndex}
+              swipeable
+              useOnPan={false}
+              onTabClick={(tab, index) => {
+                getTabIndex(index);
+                getCourseWorkData({
+                  pageIndex: 1,
+                  pageSize: pageSize,
+                  OrderType: index
+                }, 1, index);
+              }}
+        />
+      </div>
+    );
+  }
 }
 
 export default TopBar;

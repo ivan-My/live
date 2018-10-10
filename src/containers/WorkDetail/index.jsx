@@ -1,58 +1,59 @@
 import React from "react";
-import { setTitle } from "../../utils/utils";
 import { connect } from "react-redux";
-import { getCourseWorkQueryByIdData } from "../../store/workDetail";
+import { setTitle } from "../../utils/utils";
+import {
+  actions,
+  getAddLikeData,
+  getCourseWorkQueryByIdData,
+  getIsLikeData,
+  getRemoveLikeData
+} from "../../store/workDetail";
 import BackHome from "../../components/BackHome";
 import Header from "./Header";
 import TeachList from "./TeachList";
 import TopicList from "./TopicList";
 import FooterBtn from "./FooterBtn";
 import FooterInput from "./FooterInput";
-import DocumentTitle from "react-document-title";
+import { clearState } from "../../store/clearState";
 
 
 const mapState = (state) => ({
-  queryList: state.worksDetail.getIn(["queryList"]).toJS()
+  queryList: state.getIn(["worksDetail", "queryList"]).toJS(),
+  isInput: state.getIn(["worksDetail", "isInput"])
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  clearState: () => dispatch(clearState()),
+  getCourseWorkQueryByIdData: (params) => dispatch(getCourseWorkQueryByIdData(params))
 });
 
 @connect(
   mapState,
-  { getCourseWorkQueryByIdData }
+  mapDispatchToProps
 )
 class WorkDetail extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isInput: false
-    };
-    this.changeInput = this.changeInput.bind(this);
-  }
 
   componentDidMount() {
     let workId = this.props.match.params.id;
     this.props.getCourseWorkQueryByIdData({ workId });
   };
 
-  changeInput() {
-    this.setState({
-      isInput: !this.state.isInput
-    });
+  componentWillUnmount() {
+    this.props.clearState();
   }
 
   render() {
-    const { queryList } = this.props;
+    const { queryList, isInput } = this.props;
+    let id = this.props.match.params.id;
     setTitle(queryList.Title);
-
     return (
       <div className="work-detail">
-        {/*<DocumentTitle title={queryList.Title } />*/}
         <BackHome/>
         <Header data={queryList}/>
         <TeachList data={queryList.TeacherCommentDataList}/>
-        <TopicList id={this.props.match.params.id}/>
-        <FooterBtn id={this.props.match.params.id} change={this.changeInput}/>
-        {this.state.isInput ? <FooterInput id={this.props.match.params.id} change={this.changeInput}/> : null}
+        {queryList.TeacherCommentDataList &&  <TopicList id={id}/>}
+        <FooterBtn id={id} likeNum={queryList.LikeCnt}/>
+        {isInput ? <FooterInput id={id}/> : null}
       </div>
     );
   }

@@ -6,9 +6,9 @@ import styles from "./style.scss";
  * @description <没有数据时显示的内容>
  */
 
-class NullData extends React.Component {
+class NullCourse extends React.Component {
   static toImg(index) {
-    let src;
+    let src = '';
     switch (index) {
       case 1:
         return src = "http://116.211.88.85:8602/static/roomChannel/draw.png";
@@ -28,7 +28,7 @@ class NullData extends React.Component {
     return (
       <div className={styles["no-course"]}>
         <div className={styles["no-img"]}>
-          <img src={NullData.toImg(index)} alt=""/>
+          <img src={NullCourse.toImg(index)} alt=""/>
         </div>
         <p>更多好课正在赶来</p>
         <p>同学们敬请期待</p>
@@ -37,5 +37,5 @@ class NullData extends React.Component {
   }
 }
 
-export default NullData;
+export default NullCourse;
 

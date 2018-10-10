@@ -1,21 +1,32 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getTuanQueryList } from "../../api";
 import DocumentTitle from "react-document-title";
-import TopCon from "./TopCon";
+import Header from "./Header";
 import GroupList from "./GroupList";
 import Tab from "./Tab";
 import DrawerList from "./DrawerList";
 import { getEnterCourseGroupData } from "../../store/courseDetail.js";
+import { clearState } from "../../store/clearState";
 
 /**
  * @constructor <CourseDetail />
  * @description 课程详情页
  */
 
+const mapStateToProps = (state) => {
+  return {
+    courseDetailData: state.getIn(["courseDetail", "courseDetailData"]).toJS(),
+    isDrawLoad: state.getIn(["courseDetail", "isDrawLoad"])
+  };
+};
+const mapDispatchToProps = (dispatch) => ({
+  clearState: () => dispatch(clearState()),
+  getEnterCourseGroupData: (params) => dispatch(getEnterCourseGroupData(params))
+});
+
 @connect(
-  state => state.courseDetail,
-  { getEnterCourseGroupData }
+  mapStateToProps,
+  mapDispatchToProps
 )
 class CourseDetail extends React.Component {
   componentDidMount() {
@@ -25,6 +36,10 @@ class CourseDetail extends React.Component {
     });
   };
 
+  componentWillUnmount() {
+    this.props.clearState();
+  }
+
   render() {
     const data = this.props.courseDetailData;
     if (Object.keys(data).length === 0) {
@@ -33,7 +48,7 @@ class CourseDetail extends React.Component {
     return (
       <React.Fragment>
         <DocumentTitle title={data.CourseGroupName}/>
-        <TopCon d={data}/>
+        <Header d={data}/>
         {data.TuanOrderList.length > 0 && <GroupList data={data.TuanOrderList} tuanNum={data.TuanOrderCount}/>}
         <Tab data={data.Introduce} listData={data.CourseDataList}/>
         {this.props.isDrawLoad && <DrawerList id={this.props.match.params.id}/>}

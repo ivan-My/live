@@ -1,15 +1,25 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { ListView, Icon } from "antd-mobile";
+import { Icon, ListView } from "antd-mobile";
 import { getCourseWorkData, getvideoUrl } from "../../../store/works";
 import CSSModules from "react-css-modules";
 import styles from "./style.scss";
 import Loading from "../../../components/LoadingM";
 import VideoAlert from "../../../components/VideoAlert";
 
+const mapStateToProps = (state) => {
+  return {
+    data: state.getIn(["works", "data"]).toJS(),
+    pageSize: state.getIn(["works", "pageSize"]),
+    OrderType: state.getIn(["works", "OrderType"]),
+    tabIndex: state.getIn(["works", "tabIndex"]),
+    pageIndex: state.getIn(["works", "pageIndex"]),
+    videoUrl: state.getIn(["works", "videoUrl"])
+  };
+};
 @connect(
-  state => state.works,
+  mapStateToProps,
   { getCourseWorkData, getvideoUrl }
 )
 @CSSModules(styles)
@@ -19,21 +29,22 @@ export default class Lists extends React.Component {
   }
 
   getListData(index) {
-    this.props.getCourseWorkData({
-      pageIndex: index,
-      pageSize: this.props.pageSize,
-      OrderType: this.props.tabIndex
-    }, index, this.props.tabIndex);
+    const { getCourseWorkData, pageSize, tabIndex } = this.props;
+    getCourseWorkData({
+      pageSize: pageSize,
+      OrderType: tabIndex
+    }, index, tabIndex);
   }
 
   onEndReached = () => {
-    let index = this.props.pageIndex;
+    const { getCourseWorkData, pageSize, tabIndex, pageIndex } = this.props;
+    let index = pageIndex;
     index++;
-    this.props.getCourseWorkData({
+    getCourseWorkData({
       pageIndex: index,
-      pageSize: this.props.pageSize,
-      OrderType: this.props.tabIndex
-    }, index, this.props.tabIndex);
+      pageSize: pageSize,
+      OrderType: tabIndex
+    }, index, tabIndex);
   };
 
   renderImgList(d) {
@@ -104,15 +115,15 @@ export default class Lists extends React.Component {
     );
   }
 
-  transDataSource() {
+  formatDataSource() {
     const data = new ListView.DataSource({
       rowHasChanged: (row1, row2) => row1 !== row2
     });
-    const dataSource = data.cloneWithRows(this.props.data);
-    return dataSource;
+    return data.cloneWithRows(this.props.data);
   }
 
   render() {
+    const { data, videoUrl, getvideoUrl } = this.props;
     const row = (d) => {
       return this.renderRow(d);
     };
@@ -121,7 +132,7 @@ export default class Lists extends React.Component {
         <ListView
           styleName="my-listView"
           ref={el => this.lv = el}
-          dataSource={this.transDataSource()}
+          dataSource={this.formatDataSource()}
           renderRow={row}
           useBodyScroll
           scrollRenderAheadDistance={500}
@@ -131,8 +142,7 @@ export default class Lists extends React.Component {
             <div className={styles.renderFooter}><Loading/></div>
           )}
         />
-        {this.props.videoUrl !== "" ? <VideoAlert src={this.props.videoUrl}
-                                                  getvideoUrl={this.props.getvideoUrl}/> : null}
+        {videoUrl !== "" && <VideoAlert src={videoUrl} getvideoUrl={getvideoUrl}/>}
 
       </React.Fragment>
     );

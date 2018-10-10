@@ -23,6 +23,7 @@ class DrawerList extends React.Component {
       pageSize: 15
     });
   }
+
   sidebars() {
     return (
       <React.Fragment>

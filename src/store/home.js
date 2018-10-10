@@ -1,4 +1,10 @@
-import { getQueryList, getCourseChannelQueryList, getCourseGroupQueryList, getSumGetChannelCourseGroup } from "../api";
+import { fromJS } from "immutable";
+import {
+  getQueryList,
+  getCourseChannelQueryList,
+  getCourseGroupQueryList,
+  getSumGetChannelCourseGroup
+} from "../api";
 
 const types = {
   BANNer_DATA: "banner_data",
@@ -8,37 +14,49 @@ const types = {
   GROUP: "group"
 };
 
-const defaultState = {
-  bannerData: [],
-  tabsData: [],
-  selectedTab: 1,
-  scrollLoad: false,
-  group: [],
-  group1: [],
-  group2: []
-};
+const defaultState = fromJS({
+    bannerData: [],
+    tabsData: [],
+    selectedTab: 1,
+    scrollLoad: false,
+    group: [],
+    group1: [],
+    group2: []
+  });
 
 const addGroupList = (state, action) => {
-  return {
-    ...state,
+
+  return state.merge({
     group: action.payload.DataCourseGroup_Hot.Data.Data,
     group1: action.payload.DataCourseGroup_New.Data.Data,
     group2: action.payload.DataCourseGroup_New.Data.Data
-  };
+  });
 };
 export const homeRedurces = (state = defaultState, action) => {
   switch (action.type) {
     case types.BANNer_DATA:
-      return { ...state, bannerData: action.payload };
+      return state.merge({
+        bannerData: action.payload,
+      });
+    //  return { ...state, bannerData: action.payload };
     case types.COURSE_TABS:
-      return { ...state, tabsData: action.payload };
+    //  return { ...state, tabsData: action.payload };
+      return state.merge({
+        tabsData: action.payload,
+      });
     case types.TOGGLE_SCROLL_TOP:
-      return { ...state, scrollLoad: action.show };
+     // return { ...state, scrollLoad: action.show };
+      return state.merge({
+        scrollLoad: action.show,
+      });
     case types.SELECT_BAR:
-      return { ...state, selectedTab: action.index };
+     // return { ...state, selectedTab: action.index };
+      return state.merge({
+      selectedTab: action.index,
+    });
     case types.GROUP:
-
       return addGroupList(state, action);
+
     default:
       return state;
   }

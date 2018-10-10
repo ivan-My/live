@@ -9,12 +9,18 @@ import { getSumGetChannelCourseGroupData } from "../../../store/home";
  * @description <头部>
  */
 
+//return { otherCourseData: state.otherCourse.otherCourseData };
+//queryList: state.worksDetail.getIn(["queryList"]).toJS(),
 function mapStateToProps(state) {
-  return { otherCourseData: state.otherCourse.otherCourseData };
+  return {
+    otherCourseData: state.getIn(["otherCourse","otherCourseData"]).toJS()
+  };
+ // return { otherCourseData: state.otherCourse.otherCourseData }
 }
 
 @connect(
-  mapStateToProps
+  mapStateToProps,
+  null
 )
 class Header extends React.Component {
   render() {

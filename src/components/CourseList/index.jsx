@@ -8,8 +8,6 @@ import StatusBtn from "../../components/StatusBtn";
  * @constructor <CourseList/>
  * @description <课程列表模版>
  */
-
-
 export const CourseList = (item) => {
   return (
     <div className={styles["course-list"]} key={item.CourseGroupId}>

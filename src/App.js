@@ -14,17 +14,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //flexbale 布局
-    let cookie = "tcrfam42oulokkajp0iclcg0";
-    let testCookie = "znjjr3w350uujpj0xn3esoms";
+    /***
+     * https://www.hihiworld.com 测试环境地址，自行微信登陆获取cookie，
+     * 即可访问到所有接口信息
+     * */
+    let cookie = "vfdlnebp0z2c5ipegdjnoj44";
+    let testCookie = "wv4kfu2cq24afhpw1jhtihbb";
     document.cookie = "ASP.NET_SessionId=" + cookie;
     getUserInfos().then(res => {
       //console.log(res.Data);
     });
-  }
-
-  componentWillUpdate(nextprops) {
-    // console.log(nextprops)
   }
 
   render() {
