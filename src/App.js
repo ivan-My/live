@@ -16,7 +16,7 @@ class App extends Component {
     //let testCookie = "wv4kfu2cq24afhpw1jhtihbb";
     document.cookie = "ASP.NET_SessionId=" + cookie;
     getUserInfos().then(res => {
-      //console.log(res.Data);
+      console.log(res.Data);
     });
   }
 
