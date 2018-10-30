@@ -36,14 +36,12 @@ class Home extends React.Component {
   render() {
     const { banner } = this.props;
     return (
-      <div>
-
+      <React.Fragment>
         <DocumentTitle title="海淘好课"/>
         <Banner data={banner}/>
         <CourseTabs/>
         <List/>
-
-      </div>
+       </React.Fragment>
     );
   }
 }

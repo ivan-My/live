@@ -53,12 +53,12 @@ class Lists extends React.Component {
     const newnewData = newData.toJS();
     const newrecommendData = recommendData.toJS();
     return (
-      <div>
+      <React.Fragment>
         {this.renderNullData(newGroup, newnewData, newrecommendData, selectedTab)}
         {newnewData.length > 0 && this.renderList(newnewData, "好课上新")}
         {newrecommendData.length > 0 && this.renderList(newrecommendData, "人气推荐")}
         {newGroup.length > 0 && this.renderList(newGroup, "更多严选")}
-      </div>
+        </React.Fragment>
     );
   }
 }
