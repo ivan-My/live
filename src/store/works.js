@@ -9,7 +9,7 @@ export const types = {
 
 const defaultState = fromJS({
   data: [],
-  tabIndex: 0,
+  tabIndex: 2,
   OrderType: 0,
   pageIndex: 1,
   pageSize: 5,

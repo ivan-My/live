@@ -10,7 +10,7 @@ import { strArr,isDataSize } from "../../../utils/utils";
 
 class Header extends React.Component {
   renderImg(data) {
-    strArr(data.Image).map((item, index) => {
+    return strArr(data.Image).map((item, index) => {
       return (
         <div className={styles.item} key={index}>
           <img src={item} alt="" />
@@ -24,7 +24,7 @@ class Header extends React.Component {
     return (
       <div className={styles["work-detail-top"]}>
         <div className={styles["work-img-list"]}>
-          {this.renderImg(data)}
+          {this.renderImg(data)}  
         </div>
         <div className={styles.tit}>
           <p>{data.Title}</p>

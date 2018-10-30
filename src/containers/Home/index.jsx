@@ -6,6 +6,7 @@ import Banner from "../../components/Banner";
 import CourseTabs from "./CourseTabs/index";
 import List from "./Lists";
 
+
 /**
  * @constructor <Home />
  * @description 作品
@@ -29,15 +30,19 @@ class Home extends React.Component {
       pageSize: 10
     });
   }
+ 
+  
 
   render() {
     const { banner } = this.props;
     return (
       <div>
+
         <DocumentTitle title="海淘好课"/>
         <Banner data={banner}/>
         <CourseTabs/>
         <List/>
+
       </div>
     );
   }

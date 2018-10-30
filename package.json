@@ -42,7 +42,6 @@
     "postcss-loader": "2.0.8",
     "promise": "8.0.1",
     "raf": "3.4.0",
-    "rcombineReducers": "^4.0.0",
     "react": "^16.5.2",
     "react-content-loader": "^3.2.0",
     "react-css-modules": "^4.7.7",
