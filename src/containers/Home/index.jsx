@@ -7,6 +7,7 @@ import CourseTabs from "./CourseTabs/index";
 import List from "./Lists";
 
 
+
 /**
  * @constructor <Home />
  * @description 作品
@@ -14,7 +15,7 @@ import List from "./Lists";
 
 const mapStateToProps = (state) => {
   return {
-    banner: state.getIn(["home","bannerData"]).toJS()
+    banner: state.getIn(["home", "bannerData"]).toJS()
   };
 };
 
@@ -24,24 +25,25 @@ const mapStateToProps = (state) => {
 )
 class Home extends React.Component {
   componentDidMount() {
+
     this.props.getQueryListData({
       newsType: "banner",
       pageIndex: 1,
       pageSize: 10
     });
   }
- 
-  
+
+
 
   render() {
     const { banner } = this.props;
     return (
       <React.Fragment>
-        <DocumentTitle title="海淘好课"/>
-        <Banner data={banner}/>
-        <CourseTabs/>
-        <List/>
-       </React.Fragment>
+        <DocumentTitle title="海淘好课" />
+        <Banner data={banner} />
+        <CourseTabs />
+        <List />
+      </React.Fragment>
     );
   }
 }

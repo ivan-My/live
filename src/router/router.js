@@ -1,10 +1,6 @@
 export const RouterLis = [
   {
     component: () => import("../containers/Home"),
-    path: "/"
-  },
-  {
-    component: () => import("../containers/Home"),
     path: "/home"
   },
   {

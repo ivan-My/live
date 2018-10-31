@@ -25,6 +25,7 @@ const mapStateToProps = (state) => {
   { getSumGetChannelCourseGroupData }
 )
 class Lists extends React.Component {
+  
 
   componentDidMount() {
     let id = this.props.selectedTab;

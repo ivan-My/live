@@ -15,7 +15,7 @@ export const CourseList = (item) => {
         <div className={styles.badge}>
           <StatusBtn status={item.CourseStatus} className={styles.badge}/>
         </div>
-        <Link to={"/courseDetail/" + item.CourseGroupId}>
+        <Link to={"/courseDetail/" + item.CourseGroupId} replace={true}>
           <List.Item thumb={item.TitleImg}>
             <div className={styles.tit}>{item.CourseGroupName}</div>
             <div className={styles.head}>
