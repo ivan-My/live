@@ -111,19 +111,16 @@ module.exports = {
             {
                 test: /\.(js|jsx|mjs)$/,
                 enforce: 'pre',
-                use: [
-                    {
-                        options: {
-                            formatter: eslintFormatter,
-                            eslintPath: require.resolve('eslint'),
+                use: [{
+                    options: {
+                        formatter: eslintFormatter,
+                        eslintPath: require.resolve('eslint'),
 
-                        },
-                        loader: require.resolve('eslint-loader'),
                     },
-                ],
+                    loader: require.resolve('eslint-loader'),
+                }, ],
                 include: paths.appSrc,
-            },
-            {
+            }, {
                 // "oneOf" will traverse all following loaders until one will
                 // match the requirements. When no loader matches it will fall
                 // back to the "file" loader at the end of the loader list.
@@ -146,7 +143,10 @@ module.exports = {
                         loader: require.resolve('babel-loader'),
                         options: {
                             plugins: [
-                                ['import', {libraryName: 'antd-mobile', style: 'css'}],
+                                ['import', {
+                                    libraryName: 'antd-mobile',
+                                    style: 'css'
+                                }],
                             ],
 
                             // This is a feature of `babel-loader` for webpack (not Babel itself).
@@ -164,14 +164,12 @@ module.exports = {
                     {
                         test: /\.css$/,
                         use: [
-                            require.resolve('style-loader'),
-                            {
+                            require.resolve('style-loader'), {
                                 loader: require.resolve('css-loader'),
                                 options: {
                                     importLoaders: 1,
                                 },
-                            },
-                            {
+                            }, {
                                 loader: require.resolve('postcss-loader'),
                                 options: {
                                     // Necessary for external CSS imports to work
@@ -208,10 +206,9 @@ module.exports = {
                         options: {
                             name: 'static/media/[name].[hash:8].[ext]',
                         },
-                    },
-                    {
-                      //  '[local]__[hash:8]'
-                      //  [name]__[local]-[hash:base64:5]
+                    }, {
+                        //  '[local]__[hash:8]'
+                        //  [name]__[local]-[hash:base64:5]
                         test: /\.scss$/,
                         loaders: ['style-loader', 'css-loader?modules&localIdentName=[local]__[hash:8]', 'sass-loader'],
                     },
@@ -272,6 +269,3 @@ module.exports = {
         hints: false,
     },
 };
-
-
-

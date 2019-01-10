@@ -42,15 +42,15 @@ function getBrowser() {
 }
 
 
-export const setTitle = function (title) {
+export const setTitle = function(title) {
   document.title = title === undefined ? document.title : title;
 };
 
-export const strArr = function (str) {
+export const strArr = function(str) {
   return str.split(",");
 };
 
-export const isDataSize = function (data) {
+export const isDataSize = function(data) {
   if (Object.keys(data).length === 0) return true;
   return false;
-}
+};

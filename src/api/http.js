@@ -1,6 +1,12 @@
 import axios from "axios";
 import { Toast } from "antd-mobile";
 
+const config = {
+  server: "//www.hihiworld.com/Live",
+  host: "www.hihiworld.com",
+  upload: "//upload.hihiworld.com",
+  ws: "wss://socket.hihiworld.com/ws"
+};
 const successCode = 0;
 let httpNum = 0;
 const instance = axios.create({
@@ -10,7 +16,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function(config) {
   if (httpNum === 0) {
-    Toast.loading("Loading...", 0);
+    // Toast.loading("Loading...", 0);
   }
   httpNum++;
   return config;
@@ -33,6 +39,7 @@ export default class Https {
         if (data.Code === successCode) {
           resolve(data);
         } else if (data.Code === -102) {
+          //window.location.href = config.server + "/account/loginwx?rurl=" + window.location.href.split("#")[1]
           const result = data.Message || data;
           resolve({ data: result });
         } else {
@@ -40,7 +47,7 @@ export default class Https {
           reject({ err: data.Message, name: data.name || "" });
         }
       }).catch((err) => {
-        console.log(err)
+        console.log(err);
         reject({ err: JSON.stringify(err) });
       });
     });

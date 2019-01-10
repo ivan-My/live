@@ -34,7 +34,7 @@ export default class Tab extends React.Component {
                       </p>
                       <div className={styles["foot-num"]}>
                         <p className={styles["end-time"]}> {item.ViewUserCnt}人学习</p>
-                        <Badge style={{ color: "#6f9cb9", background: "none" }} text={tit}/>
+                        <Badge style={{ color: "#6f9cb9", background: "none" }} text={tit} />
                       </div>
                     </div>
                   </List.Item>
@@ -65,7 +65,7 @@ export default class Tab extends React.Component {
           swipeable={false}
           tabBarUnderlineStyle={{ color: "red" }}
         >
-          <div className={styles.htmlCon} dangerouslySetInnerHTML={{ __html: data }}/>
+          <div className={styles.htmlCon} dangerouslySetInnerHTML={{ __html: data }} />
           {this.renderList(listData)}
         </Tabs>
       </div>

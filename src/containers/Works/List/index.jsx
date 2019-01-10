@@ -76,7 +76,7 @@ export default class Lists extends React.Component {
 
     renderImgList(d) {
         return (
-            d.Image !== "" ? d.Image.split(",").map((item, index, array) => {
+            d.Image !== "" ? d.Image.split(",").map((item, index, array) => {a
                 return (
                     <div className={array.length !== 1 ? styles.list : styles.alist}
                         key={index}>
@@ -123,7 +123,7 @@ export default class Lists extends React.Component {
                             </div>
                             <div className={styles["work-data-item"]}>
                                 <img src="http://test.hihiworld.com/web/static/img/workcomment.png" alt="" />
-                                &nbsp;{d.CommentCnt}
+                                &nbsp;
                             </div>
                         </div>
                     </Link>

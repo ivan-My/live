@@ -3,6 +3,30 @@ import { connect } from "react-redux";
 import { TabBar } from "antd-mobile";
 import styles from "./style.scss";
 import { getCourseTabsData, getSumGetChannelCourseGroupData, actions } from "../../../store/home";
+import ContentLoader from "react-content-loader";
+
+
+const MyLoader = props => (
+  <ContentLoader
+    height={160}
+    width={400}
+    speed={3}
+    secondaryColor="#ffffff"
+    primaryColor="lightgray"
+    {...props}
+  >
+
+    <circle cx="50" cy="50" r="30" />
+    <circle cx="150" cy="50" r="30" />
+    <circle cx="250" cy="50" r="30" />
+    <circle cx="350" cy="50" r="30" />
+
+    <rect x="35" y="91" rx="0" ry="0" width="30" height="5" />
+    <rect x="135" y="91" rx="0" ry="0" width="30" height="5" />
+    <rect x="235" y="91" rx="0" ry="0" width="30" height="5" />
+    <rect x="335" y="91" rx="0" ry="0" width="30" height="5" />
+  </ContentLoader>
+);
 
 /**
  * @constructor <CourseTabs />
@@ -94,9 +118,9 @@ export default class CourseTabs extends React.Component {
           zIndex: "9"
         } : null}
       >
-        <TabBar tabBarPosition="top" noRenderContent="false">
+        {newTabsData.length > 0 ? <TabBar tabBarPosition="top" noRenderContent="false">
           {this.renderItems(newTabsData, selectedTab)}
-        </TabBar>
+        </TabBar> : <MyLoader />}
       </div>
     );
   }

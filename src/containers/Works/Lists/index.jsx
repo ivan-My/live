@@ -50,16 +50,16 @@ export default class Lists extends React.Component {
       d.Image !== "" ? d.Image.split(",").map((item, index, array) => {
         return (
           <div className={array.length !== 1 ? styles.list : styles.alist}
-            key={index}>
-            <img src={item} alt="" />
+               key={index}>
+            <img src={item} alt=""/>
           </div>
         );
       }) : <div className={styles.alist}>
-          <img src={d.Poster} alt="" />
-          <img className={styles.play}
-            onClick={(v) => this.props.getvideoUrl({ url: d.VideoUrl }, v)}
-            src="http://test.hihiworld.com/web/static/img/biggestplay@3x.png" alt="" />
-        </div>
+        <img src={d.Poster} alt=""/>
+        <img className={styles.play}
+             onClick={(v) => this.props.getvideoUrl({ url: d.VideoUrl }, v)}
+             src="http://test.hihiworld.com/web/static/img/biggestplay@3x.png" alt=""/>
+      </div>
     );
   }
 
@@ -70,7 +70,7 @@ export default class Lists extends React.Component {
         className={styles.item}>
         <div className={styles.top}>
           <div className={styles["top-img"]}>
-            <img src={d.UserData.HeadImg} alt="" />
+            <img src={d.UserData.HeadImg} alt=""/>
           </div>
           {d.UserData.NickName}
           <span className={styles.time}>{d.CreateTime}</span>
@@ -85,15 +85,15 @@ export default class Lists extends React.Component {
           <Link to={"/workDetail/" + d.WorkId}>
             <div className={styles["work-data"]}>
               <div className={styles["work-data-item"]}>
-                <img src="http://test.hihiworld.com/web/static/img/workbrowse.png" alt="" />
+                <img src="http://test.hihiworld.com/web/static/img/workbrowse.png" alt=""/>
                 &nbsp;{d.BrowseCnt}
               </div>
               <div className={styles["work-data-item"]}>
-                <img src="http://test.hihiworld.com/web/static/img/workgood.png" alt="" />
+                <img src="http://test.hihiworld.com/web/static/img/workgood.png" alt=""/>
                 &nbsp;{d.LikeCnt}
               </div>
               <div className={styles["work-data-item"]}>
-                <img src="http://test.hihiworld.com/web/static/img/workcomment.png" alt="" />
+                <img src="http://test.hihiworld.com/web/static/img/workcomment.png" alt=""/>
                 &nbsp;{d.CommentCnt}
               </div>
             </div>
@@ -102,10 +102,10 @@ export default class Lists extends React.Component {
         <Link to={"/courseDetail/" + d.CourseGroupId}>
           <div className={styles.coursename}>
             <div className={styles.coursenameImg}>
-              <img src={d.TeacherData.HeadImg} alt="" />
+              <img src={d.TeacherData.HeadImg} alt=""/>
             </div>
             <div>{d.CourseGroupName}</div>
-            <Icon type="right" className={styles["icon-left"]} />
+            <Icon type="right" className={styles["icon-left"]}/>
 
           </div>
         </Link>
@@ -137,10 +137,10 @@ export default class Lists extends React.Component {
           onEndReached={this.onEndReached}
           onEndReachedThreshold={3}
           renderFooter={() => (
-            <div className={styles.renderFooter}><Loading /></div>
+            <div className={styles.renderFooter}><Loading/></div>
           )}
         />
-        {videoUrl !== "" && <VideoAlert src={videoUrl} getvideoUrl={getvideoUrl} />}
+        {videoUrl !== "" && <VideoAlert src={videoUrl} getvideoUrl={getvideoUrl}/>}
       </React.Fragment>
     );
   }

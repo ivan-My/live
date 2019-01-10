@@ -1,67 +1,145 @@
 import React from "react";
-import { getQueryList, getSumGetChannelCourseGroup, getUserInfos } from "../../api";
+import { Toast } from "antd-mobile";
+import {
+  getQueryList,
+  getSumGetChannelCourseGroup,
+  getUserInfos
+} from "../../api";
+import {
+  clearState
+} from "../../store/clearState";
+import axios from "axios";
+import {
+  getCourseWork
+} from "../../api";
+import Example from './hooks'
+
+import './style.css'
+
+
+let index = 1;
 
 class Test extends React.Component {
-
   state = {
-    data: [1, 2, 3, 4, 5]
+    data: [],
+    num:0
+
   };
+
+
 
   componentWillMount() {
     window.addEventListener("scroll", this.onScroll.bind(this));
-
+    this.setState({
+      num:0
+    })
   }
 
   componentDidMount() {
-    const p = [getQueryList(), getSumGetChannelCourseGroup(), getUserInfos()];
-    Promise.all(p).then(res => {
-      //  console.log("所有请求已经完成");
-      //console.log(res);
-    }).catch(err => {
-     // console.log(err);
-    });
+
+    getCourseWork({
+      pageIndex: index,
+      pageSize: 10,
+      OrderType: 2
+    }).then(res => {
+      const data = res.Data.Data
+      this.setState({
+        data
+      })
+    })
   }
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.onScroll.bind(this));
+  }
+  getData() {
+    getCourseWork({
+      pageIndex: 1,
+      pageSize: 10,
+      OrderType: 2
+    }).then(res => {
+      console.log(res.Data.Data)
+    })
   }
   onScroll(e) {
     let clientHeight = document.documentElement.clientHeight; //浏览器高度
     let scrollHeight = document.body.scrollHeight;
     let scrollTop = document.documentElement.scrollTop;
     let proLoadDis = 5;
-    console.log(scrollHeight);
-    console.log(scrollTop);
+
+
     if ((scrollTop + clientHeight) >= (scrollHeight - proLoadDis)) {
       console.log("到底了");
-     // console.log(clientHeight);
-      
-      var data = [];
-      for (var i = 0; i < 8; i++) {
-        data.push(i)
-      }
-      this.setState({
-        data: data.concat(this.state.data)
+      let i = index++
+      getCourseWork({
+        pageIndex: i,
+        pageSize: 10,
+        OrderType: 2
+      }).then(res => {
+        const data = res.Data.Data
+        this.setState({
+          data: data.concat(this.state.data)
+        })
       })
     }
   }
   render() {
-    const style = {
-      "width": "300px",
-      "height": "150px",
-      "border": "1px solid black",
-      'margin': '10px'
-    };
+  
+    // const Ele = function () {
+    //   return React.createElement(
+    //     "div",
+    //     {
+    //       "className": "main", "id": "18", "data": '000'
+    //     },
+    //     React.createElement(
+    //       'div',
+    //       {"id":"div2"},
+    //       React.createElement(
+    //         'span',
+    //         {"className":"span"},
+    //         'wo shi span',
+    //       )
+    //     )
+    //   );
+    // }
+
+   
     return (
-      <div >
-        {
-          this.state.data.map((item, key) => {
-            return <div key={key} style={style}> {item}</div>
-          })
-        }
+      <div className="main">
+asdf
+        {this.state.num}
+
       </div>
     );
   }
+}
+
+
+ function withHeader(WrappedComponent) {
+  return class HOC extends WrappedComponent {
+    render() {
+      const newProps = {
+        test:'hoc'
+      }
+      // 透传props，并且传递新的newProps
+      return <div>
+        <WrappedComponent {...this.props} {...newProps}/>
+      </div>
+    }
+  }
+}
+
+function Hook(Wrapper) {
+  return class Inheritance extends Wrapper {
+    render() {
+     // console.log(this.state)
+      if (this.state.data.length === 0) {
+        Toast.loading("Loading...", 0);
+      }
+      return super.render();
+    }
+  }
+
 }
 
 export default Test;

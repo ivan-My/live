@@ -90,6 +90,7 @@ choosePort(HOST, DEFAULT_PORT)
         clearConsole();
       }
       console.log(chalk.cyan('Starting the development server...\n'));
+
       openBrowser(urls.localUrlForBrowser);
     });
 
@@ -99,10 +100,13 @@ choosePort(HOST, DEFAULT_PORT)
         process.exit();
       });
     });
+
   })
   .catch(err => {
     if (err && err.message) {
       console.log(err.message);
     }
     process.exit(1);
+
+
   });

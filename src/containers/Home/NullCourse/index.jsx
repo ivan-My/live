@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "./style.scss";
 
-
 /**
  * @constructor <NullDatta/>
  * @description <没有数据时显示的内容>
  */
-
-
 
 class NullCourse extends React.Component {
   static toImg(index) {
