@@ -11,7 +11,7 @@ import axios from "axios";
 class App extends Component {
   componentDidMount() {
     /***
-     * https://www.hihiworld.com 测试环境地址，自行微信登陆获取cookie，
+     * https://www.hihiworld.com 测试环境地址，自行微信登陆获取cookie.
      * 即可访问到所有接口信息
      * */
     let cookie = "nykakdst23i04exaavx2p2cx";
