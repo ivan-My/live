@@ -6,7 +6,7 @@ import RouterList from "./routes";
 
 const Router = () => (
   <HashRouter>
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={null}>
       <React.Fragment>
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <RouterList />

@@ -16,12 +16,12 @@ const mapStateToProps = (state) => {
     banner: state.getIn(["home", "bannerData"]).toJS()
   };
 };
+
 @connect(
   mapStateToProps,
   { getQueryListData }
 )
 class Home extends React.Component {
-
   componentDidMount() {
     this.props.getQueryListData({
       newsType: "banner",
@@ -35,7 +35,7 @@ class Home extends React.Component {
     return (
       <React.Fragment>
         <DocumentTitle title="海淘好课" />
-        <Banner data={ banner } />
+        <Banner data={banner} />
         <CourseTabs />
         <List />
       </React.Fragment>

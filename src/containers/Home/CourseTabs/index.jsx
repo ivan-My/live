@@ -16,15 +16,15 @@ const MyLoader = props => (
     {...props}
   >
 
-    <circle cx="50" cy="50" r="30" />
-    <circle cx="150" cy="50" r="30" />
-    <circle cx="250" cy="50" r="30" />
-    <circle cx="350" cy="50" r="30" />
+    <circle cx="50" cy="50" r="30"/>
+    <circle cx="150" cy="50" r="30"/>
+    <circle cx="250" cy="50" r="30"/>
+    <circle cx="350" cy="50" r="30"/>
 
-    <rect x="35" y="91" rx="0" ry="0" width="30" height="5" />
-    <rect x="135" y="91" rx="0" ry="0" width="30" height="5" />
-    <rect x="235" y="91" rx="0" ry="0" width="30" height="5" />
-    <rect x="335" y="91" rx="0" ry="0" width="30" height="5" />
+    <rect x="35" y="91" rx="0" ry="0" width="30" height="5"/>
+    <rect x="135" y="91" rx="0" ry="0" width="30" height="5"/>
+    <rect x="235" y="91" rx="0" ry="0" width="30" height="5"/>
+    <rect x="335" y="91" rx="0" ry="0" width="30" height="5"/>
   </ContentLoader>
 );
 
@@ -54,19 +54,19 @@ const mapDispatchToProps = (dispatch) => ({
 export default class CourseTabs extends React.Component {
   constructor(props) {
     super(props);
-    this.handleScroll = this.handleScroll.bind(this);
+    this.onHandleScroll = this.onHandleScroll.bind(this);
   }
 
   componentDidMount() {
     this.props.getCourseTabsData();
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.onHandleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.onHandleScroll);
   }
 
-  handleScroll() {
+  onHandleScroll() {
     let scrollY = window.scrollY;
     let scrollLoad = scrollY > 150 && true;
     setTimeout(() => {
@@ -120,7 +120,7 @@ export default class CourseTabs extends React.Component {
       >
         {newTabsData.length > 0 ? <TabBar tabBarPosition="top" noRenderContent="false">
           {this.renderItems(newTabsData, selectedTab)}
-        </TabBar> : <MyLoader />}
+        </TabBar> : <MyLoader/>}
       </div>
     );
   }

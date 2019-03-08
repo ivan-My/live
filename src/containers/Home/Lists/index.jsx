@@ -62,6 +62,7 @@ class Lists extends React.Component {
 
   render() {
     const { hotData, newData, recommendData, selectedTab } = this.props;
+
     const newGroup = hotData.toJS();
     const newnewData = newData.toJS();
     const newrecommendData = recommendData.toJS();

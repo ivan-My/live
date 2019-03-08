@@ -16,7 +16,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(function(config) {
   if (httpNum === 0) {
-    // Toast.loading("Loading...", 0);
+    Toast.loading("Loading...", 0);
   }
   httpNum++;
   return config;
