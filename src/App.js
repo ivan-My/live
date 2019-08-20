@@ -15,7 +15,7 @@ class App extends Component {
      * 即可访问到所有接口信息
      * */
    // 35qmqtlhqdbyh3vlilqsr5bt
-    let cookie = "am3fg5ku2jaopyj2dx5ntsbk";
+    let cookie = "0pqrhrhhf0vaby4fs1quh44a";
     //let testCookie = "wv4kfu2cq24afhpw1jhtihbb";
    document.cookie = "ASP.NET_SessionId=" + cookie;
     //document.cookie = null;

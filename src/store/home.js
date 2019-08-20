@@ -108,6 +108,7 @@ export const getQueryListData = (params) => {
 export const getCourseTabsData = (params) => {
   return (dispatch) => {
     getCourseChannelQueryList(params).then(res => {
+      sessionStorage.setItem('tabsData', JSON.stringify(res.Data))
       dispatch(actions.courseTabs(res.Data));
     });
   };

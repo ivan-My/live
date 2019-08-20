@@ -1,5 +1,7 @@
+import React from 'react'
 import axios from "axios";
 import { Toast } from "antd-mobile";
+
 
 const config = {
   server: "//www.hihiworld.com/Live",
@@ -14,18 +16,18 @@ const instance = axios.create({
   withCredentials: true // 跨域类型时是否在请求中协带cookie,
 });
 
-instance.interceptors.request.use(function(config) {
+instance.interceptors.request.use(function (config) {
   if (httpNum === 0) {
-    Toast.loading("Loading...", 0);
+  //  Toast.loading("loading...", 0);
   }
   httpNum++;
   return config;
 });
-instance.interceptors.response.use(function(config) {
+instance.interceptors.response.use(function (config) {
   if (httpNum <= 0) return;
   httpNum--;
   if (httpNum === 0) {
-    Toast.hide();
+    //Toast.hide();
   }
   return config;
 });

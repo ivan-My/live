@@ -8,22 +8,22 @@ const defaultState = fromJS({
     {
       id: 0,
       tit: "发现",
-      icon: "http://test.hihiworld.com/web/static/img/find.png",
-      selectedIcon: "http://test.hihiworld.com/web/static/img/findon.png",
+      icon: "http://www.hihiworld.com/web/static/img/find.png",
+      selectedIcon: "http://www.hihiworld.com/web/static/img/findon.png",
       hash: "/home"
     },
     {
       id: 1,
       tit: "作品",
-      icon: "http://test.hihiworld.com/web/static/img/work.png",
-      selectedIcon: "http://test.hihiworld.com/web/static/img/workon.png",
+      icon: "http://www.hihiworld.com/web/static/img/work.png",
+      selectedIcon: "http://www.hihiworld.com/web/static/img/workon.png",
       hash: "/works"
     },
     {
       id: 2,
       tit: "我的",
-      icon: "http://test.hihiworld.com/web/static/img/My.png",
-      selectedIcon: "http://test.hihiworld.com/web/static/img/myon.png",
+      icon: "http://www.hihiworld.com/web/static/img/My.png",
+      selectedIcon: "http://www.hihiworld.com/web/static/img/myon.png",
       hash: "/My"
     }
   ],

@@ -58,7 +58,9 @@ export default class CourseTabs extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCourseTabsData();
+    //let tabsData = JSON.parse(sessionStorage.getItem("tabsData"));
+    //   !tabsData && this.props.getCourseTabsData();
+    this.props.getCourseTabsData()
     window.addEventListener("scroll", this.onHandleScroll);
   }
 
@@ -118,9 +120,9 @@ export default class CourseTabs extends React.Component {
           zIndex: "9"
         } : null}
       >
-        {newTabsData.length > 0 ? <TabBar tabBarPosition="top" noRenderContent="false">
+        {newTabsData.length > 0 && <TabBar tabBarPosition="top" noRenderContent="false">
           {this.renderItems(newTabsData, selectedTab)}
-        </TabBar> : <MyLoader/>}
+        </TabBar> }
       </div>
     );
   }

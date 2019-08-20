@@ -48,11 +48,11 @@ class CourseDetail extends React.Component {
     }
     return (
       <React.Fragment>
-        <DocumentTitle title={data.CourseGroupName}/>
-        <Header d={data}/>
-        {data.IsTuan === 'T' && <GroupList data={data.TuanOrderList} tuanNum={data.TuanOrderCount}/>}
-        <Tab data={data.Introduce} listData={data.CourseDataList}/>
-        {this.props.isDrawLoad && <DrawerList id={this.props.match.params.id}/>}
+        <DocumentTitle title={data.CourseGroupName} />
+        <Header d={data} />
+        {data.IsTuan === 'T' && <GroupList data={data.TuanOrderList} tuanNum={data.TuanOrderCount} />}
+        <Tab data={data.Introduce} listData={data.CourseDataList} />
+        {this.props.isDrawLoad && <DrawerList id={this.props.match.params.id} />}
         {/*<FooterBar />*/}
       </React.Fragment>
     );

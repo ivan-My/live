@@ -6,11 +6,11 @@ import RouterList from "./routes";
 
 const Router = () => (
   <HashRouter>
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loading />}>
       <React.Fragment>
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
-          <RouterList />
-          <FooterBar />
+        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <RouterList />
+        <FooterBar />
       </React.Fragment>
     </Suspense>
   </HashRouter>

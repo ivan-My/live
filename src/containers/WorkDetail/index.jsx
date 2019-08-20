@@ -35,7 +35,7 @@ class WorkDetail extends React.Component {
   componentWillUnmount() {
     this.props.clearState();
   }
-
+  
   render() {
     const { queryList, isInput } = this.props;
     let id = this.props.match.params.id;

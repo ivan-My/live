@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Tabs } from "antd-mobile";
 import { getCourseWorkData, getTabIndex } from "../../../store/works";
 
-
 /**
  * @constructor <TopBar />
  * @description 作品顶部tabs

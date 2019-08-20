@@ -9,7 +9,7 @@ import { getIsLikeData, getRemoveLikeData, getAddLikeData, actions } from "../..
  */
 
 const mapState = (state) => ({
-  isLike: state.getIn(["worksDetail","isLike"])
+  isLike: state.getIn(["worksDetail", "isLike"])
 });
 const mapDispatchToProps = (dispatch) => {
   return ({
@@ -45,8 +45,9 @@ class FooterBtn extends React.Component {
   }
 
   render() {
+   // console.log(this.props.likeNum);
     const { likeNum, isLike } = this.props;
-    let url = isLike ? "http://test.hihiworld.com/web/static/img/good.png" : "http://test.hihiworld.com/web/static/img/workgood.png";
+    let url = isLike ? "http://www.hihiworld.com/web/static/img/good.png" : "http://www.hihiworld.com/web/static/img/workgood.png";
     return (
       <div className={styles["add-btn"]}>
         <div className={styles.left} onClick={this.toggleLike}>
@@ -55,7 +56,7 @@ class FooterBtn extends React.Component {
         </div>
         <div className={styles.center}/>
         <div className={styles.right} onClick={() => this.props.toggleInput()}>
-          <img src="http://test.hihiworld.com/web/static/img/comment@3x.png" alt=""/>
+          <img src="http://www.hihiworld.com/web/static/img/comment@3x.png" alt=""/>
         </div>
       </div>
     );

@@ -5,7 +5,10 @@ import DocumentTitle from "react-document-title";
 import Banner from "../../components/Banner";
 import CourseTabs from "./CourseTabs/index";
 import List from "./Lists";
+import { Toast } from "antd-mobile";
 
+import { getUserInfos, getQueryList, getSumGetChannelCourseGroup } from '../../api/index'
+import { gunzip } from "zlib";
 /**
  * @constructor <Home />
  * @description 作品
@@ -28,6 +31,8 @@ class Home extends React.Component {
       pageIndex: 1,
       pageSize: 10
     });
+
+   
   }
 
   render() {

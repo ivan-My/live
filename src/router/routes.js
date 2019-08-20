@@ -7,41 +7,41 @@ import {
 
 const RouterLis = [{
   component: lazy(() =>
-    import ("../containers/Home")),
+    import("../containers/Home")),
   path: "/"
 }, {
   component: lazy(() =>
-    import ("../containers/Home")),
+    import("../containers/Home")),
   path: "/home"
 }, {
   component: lazy(() =>
-    import ("../containers/My")),
+    import("../containers/My")),
   path: "/my"
 }, {
   component: lazy(() =>
-    import ("../containers/UserInfo")),
+    import("../containers/UserInfo")),
   path: "/my/userInfo"
 }, {
   component: lazy(() =>
-    import ("../containers/Works")),
+    import("../containers/Works")),
   path: "/works"
 }, {
   component: lazy(() =>
-    import ("../containers/CourseDetail")),
+    import("../containers/CourseDetail")),
   path: "/courseDetail/:id"
 }, {
   component: lazy(() =>
-    import ("../containers/OtherCourse")),
+    import("../containers/OtherCourse")),
   path: "/otherCourse/:id"
 }, {
   component: lazy(() =>
-    import ("../containers/WorkDetail")),
+    import("../containers/WorkDetail")),
   path: "/workDetail/:id"
 }];
 
 const RouterList = () => (
   RouterLis.map((item, key) => {
-    return <Route key={key} exact path={item.path} component={item.component}/>;
+    return <Route key={key} exact path={item.path} component={item.component} />;
   })
 );
 
