@@ -120,7 +120,7 @@
     "eslint-plugin-react": "^7.4.0",
     "json5": "^2.1.0",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "prettier": "^1.14.3",
     "redux-devtools-extension": "^2.13.5",
     "sass-loader": "^7.1.0",
